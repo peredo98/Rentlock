@@ -81,11 +81,11 @@
 				<h1 id='login-title'>Log in</h1>
 				<div id="login-box">
 				<div class="center">
-				<input class='input-box' type='name' placeholder='username*'></div>
+				<input class='input-box' type='name' id="lusrn" placeholder='username*'></div>
 				<div class="center">
-				<input class='input-box' type='password' placeholder='password*'></div>
+				<input class='input-box' type='password' id="lpsw" placeholder='password*'></div>
 				<div class="center">
-				<input class='submit' type='submit' value='Log in'></div>
+				<input class='submit' type='submit' id="login-button" value='Log in'></div>
 				<div class="center">
 				<h1 class='register-button register'>Register</h1></div>
 				</div>
@@ -96,27 +96,27 @@
 				<h1 id='login-title'>Register</h1>
 				<div id="register-box">
 				<div class="center2">
-				<input class='input-box2' type='name' placeholder='Name*'></div>
+				<input class='input-box2' type='name' id="fname" placeholder='Name*'></div>
 				<div class="center2">
-				<input class='input-box2' type='name' placeholder='Lastname*'></div>
+				<input class='input-box2' type='name' id="uln" placeholder='Lastname*'></div>
 				<div class="center2">
-				<input class='input-box2' type='name' placeholder='Username*'></div>
+				<input class='input-box2' type='name' id="usrn" placeholder='Username*'></div>
 				<div class="center2">
-				<input class='input-box2' type='email' placeholder='Email*'></div>
+				<input class='input-box2' type='email' id="uemail" placeholder='Email*'></div>
 				<div class="center2">
-				<input class='input-box2' type='password' placeholder='Re-enter password*'></div>
+				<input class='input-box2' type='password' id="psw"  placeholder='Password*'></div>
 				<div class="center2">
-				<input class='input-box2' type='password' placeholder='Password*'></div>
+				<input class='input-box2' type='password' id="rpsw" placeholder='Re-enter password*'></div>
 				<div class="center2">
-				<input class='input-box2' type='name' placeholder='City*'></div>
+				<input class='input-box2' type='name' id="city" placeholder='City*'></div>
 				<div class="center2">
-				<input class='input-box2' type='name' placeholder='Adreess*'></div>
+				<input class='input-box2' type='name' id="adress" placeholder='Adreess*'></div>
 				<div class="center2">
-				<input class='input-box2' type='name' placeholder='Zipcode*'></div>
+				<input class='input-box2' type='name' id="zipcode" placeholder='Zipcode*'></div>
 				<div class="center2">
-				<input class='input-box2' type='name' placeholder='Telephone*'></div>
+				<input class='input-box2' type='name' id="tel" placeholder='Telephone*'></div>
 				<div class="center2">
-				<input class='submit' type='submit' value='Register'></div>
+				<input class='submit' type='submit' id="register-button" value='Register'></div>
 				<div class="center2">
 				<input type="checkbox" name="terms" value='Register' id="checkbox_id">
 				<label for="checkbox_id">I agree to the Terms and Conditions and the privacy policy</label></div>
@@ -180,31 +180,24 @@
 					{"name":"Sim card", "ppd":"$10 per day", "mird":"30", "mard":"1", "fol":'50', "fod":"50", "ll":"Mexico City", "img":"images/p5.png", "desc":"Sim Card by Telcel, perfect for traveling", "cat": "Electronics"}
 				];}
 				else{
-					var products = getLocalStorage();
+					var products = getLocalStorageProducts();
 				}
 				
 
 				localStorage.setItem("products", JSON.stringify(products));
 
-				
-					
-				var j;
-				if(!localStorage.getItem("counter")){
-					j = products.length;
-					localStorage.setItem("counter", j);
-				}
-				else{
-					j = localStorage.getItem("counter");
-				}
 
 				function showAllproducts(){
 					for (var i = 0; i < products.length; i++) {
-						$('#products').append("<div class='box'><img src='"+ products[i].img +"'><p>'"+ products [i].ppd+"'</p></div>");
+						$('#products').append("<div class='box'><img src='"+ products[i].img +"'><p>'"+ products[i].ppd+"'</p></div>");
 					}
 				}
 				
- 				
+				var users = [];
 
+ 				if(localStorage.getItem("products")){
+ 					var users = getLocalStorageUsers();
+ 				}
 
 				$('.home').click(function(e) {
             		$("section").fadeOut();
@@ -229,19 +222,42 @@
 
        			function saveProduct(){
        				products.push({ "name":  $('#pname').val(),  "ppd": $('#ppd').val(),  "mird": $('#mird').val(),"mard": $('#mard').val(), "fol": $('#fol').val(), "fod": $('#fod').val(), "ll":$('#ll').val(), "iu":$('#iu').val(), "desc":$('#des').val(), "cat": $('#cat').val() });
-       				//products.push([ $('#pname').val(),  $('#ppd').val(),  $('#mird').val(), $('#mard').val(), $('#fol').val(), $('#fod').val(), $('#ll').val(), $('#iu').val(), $('#des').val(), $('#cat').val()]);
+       	
        				localStorage.setItem("products", JSON.stringify(products));
-       				//j++;
-       				//localStorage.setItem("counter", j);
+       	
+       			}
 
+       			function registerUser(){
+       				users.push({ "fname": $('#fname').val() ,  "uln": $('#uln').val(),  "usrn": $('#usrn').val(),"uemail": $('#uemail').val(), "psw": $('#psw').val(), "rpsw": $('#rpsw').val(), "city":$('#city').val(), "adress":$('#adress').val(), "zipcode":$('#zipcode').val(), "tel": $('#tel').val() });
+       				localStorage.setItem("users", JSON.stringify(users));
        			}
 
        			$('#upload').click(function(e) {
             		saveProduct();
 
        			});
+       			$('#register-button').click(function(e) {
+       				if($('#psw').val() == $('#rpsw').val()){
+            			registerUser();
+            		}
+            		else{
+            			window.alert("the passwords are not equal");
+            		}
+       			});
+       			$('#login-button').click(function(e) {
+       				var correct = false;
+       				for(var i = 0; i<users.length; i++ ){
+	       				if (($('#lusrn').val() == users[i].usrn) && ($('#lpsw').val() == users[i].psw)){
+	            			window.alert("login succesful");
+	            			correct = true;
+	            		}
+	            	}
+	            	if(!correct){
+	            		window.alert("usr and psw dont match");
+	            	}
+       			});
 
-       			function getLocalStorage(){
+       			function getLocalStorageProducts(){
 	       			if(localStorage.getItem("products")){
 
 	       				products = JSON.parse(localStorage.getItem("products"));
@@ -251,21 +267,16 @@
 	       			
        			}
 
-       			/*function setArray(){
-       				while(products.length > 0){
-       					products.pop();
-       				}
-       				var tempproduct = []
-       				for (var i = 0; i < j; i++) {
-	       				if(localStorage.getItem("product" + i)){
-	       					tempproduct = [localStorage.getItem("product" + i)]
-	       					products.push(tempproduct);
-						}
+       			function getLocalStorageUsers(){
+	       			if(localStorage.getItem("users")){
+
+	       				users = JSON.parse(localStorage.getItem("users"));
+						
 	       			}
-	       			console.log(products[1]);
-       			}*/
-       			
-      			//getLocalStorage();
+	       			return users;	
+       			}
+
+
        			showAllproducts();
 
 			});

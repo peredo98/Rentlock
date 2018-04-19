@@ -329,6 +329,7 @@ body{
 			cursor: pointer;
 		}
 		.files{
+			width: 100vw;
 		}
 		.files li {
 		float: left;
@@ -346,6 +347,9 @@ body{
 		}
 		#login{
 			display: none;
+		}
+		footer{
+			width: 100vw;
 		}
 		@media(max-width: 1160px){
 			#name, nav{
