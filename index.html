@@ -17,7 +17,7 @@
 					<img  class="home" id="logo"src="images/logo.png" height="40vh">
 					<text id="name">RENTLOCK</text>
 					<input id="search" type="text" placeholder="Search..." >
-					<text class="login">Log in</text>
+					<text class="login" id="usrprofile">Log in</text>
 				</header>
 				<div id="sepbar">
 				</div>
@@ -169,7 +169,8 @@
 			$(document).ready(function(){
 				$('.slider').bxSlider();
 
-				 // 0=Name  1=Price Per Day  2=Maximum renting days  3=Minimum Renting Days   4=Fee lost  5=Fee Damage 6=location 7=Img 8=Description 9=Category
+				var isLoggedIn = false;
+				var userLogged;
 
 				if(!localStorage.getItem("products")){
 				var products = [
@@ -250,6 +251,9 @@
 	       				if (($('#lusrn').val() == users[i].usrn) && ($('#lpsw').val() == users[i].psw)){
 	            			window.alert("login succesful");
 	            			correct = true;
+	            			isLoggedIn = true;
+	            			userLogged = i;
+	            			login();
 	            		}
 	            	}
 	            	if(!correct){
@@ -276,6 +280,11 @@
 	       			return users;	
        			}
 
+       			function login(){
+       				if(isLoggedIn){
+       					$('#usrprofile').text(users[userLogged].fname);
+       				}
+       			}	
 
        			showAllproducts();
 
