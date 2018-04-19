@@ -104,7 +104,7 @@ body{
 		top: 1vh; 
 		border: none; 
 		border-radius: 10px;
-		background-image: url(botonlupa.png); 
+		background-image: url(botonlupa.png);
 		background-size: 35px 35px; 
 		background-repeat: no-repeat; 
 		background-position: right;
@@ -130,7 +130,7 @@ body{
 		background-color: transparent;
 		border: none;
 		}
-		option{
+		.categories option{
 		background-color: #75afad
 		}
 		.sep{
@@ -232,6 +232,15 @@ body{
 		margin: 0 auto;
 		margin-bottom: 10vh;
 		}
+		#rentout-box{
+		height: 100vh;
+		width: 50vw;
+		background-color: white;
+		border-radius: 10px;
+		border: .5px solid rgba(0,0,0,.1);
+		margin: 0 auto;
+		margin-bottom: 10vh;
+		}
 		.input-box{
 		width: 30vw;
 		border-radius: 10px;
@@ -247,6 +256,20 @@ body{
 		font-size: 16px;
 		padding: 2vh 2vw;
 		color: gray;
+		background: white;
+		}
+		.input-box3{
+		width: 40vw;
+		border-radius: 10px;
+		border: .5px solid rgba(0,0,0,.2);
+		font-size: 16px;
+		padding: 2vh 2vw;
+		padding-bottom: 10vh;
+		color: gray;
+		background: white;
+		}
+		::placeholder {
+  	 	 color: lightgray;
 		}
 		.center{
 		margin: 0 auto;
@@ -259,8 +282,14 @@ body{
 		display: inline-block;
 		}
 		.center3{
-		margin: 0;
-		display: inline-block;
+		margin-left: 5% ;
+		margin-top: 10%;
+		display: block;
+		}
+		.center4{
+		margin: 4% 5%;
+		margin-bottom: 0;
+		display: block;
 		}
 		.submit{
 		font-family: roboto;
@@ -293,6 +322,9 @@ body{
 		#register{
 			display: none;
 		}
+		#rentout{
+			display: none;
+		}
 		.home{
 			cursor: pointer;
 		}
@@ -323,6 +355,10 @@ body{
 				width: 80vw;
 				height: 140vh;
 			}
+			#rentout-box{
+				width: 80vw;
+				height: 140vh;
+			}
 
 			.input-box{
 				width: 60vw;
@@ -331,10 +367,25 @@ body{
 				width: 50vw;
 				margin: 0;
 			}
+			.input-box3{
+				width: 50vw;
+				margin: 0;
+			}
 			.center{
 				margin-top: 5vh;
 			}
 			.center2{
+				text-align: center;
+				display: block;
+				margin-top: 3vh;
+			}
+			.center3{
+				text-align: center;
+				display: block;
+				margin-top: 3vh;
+				margin-bottom: 3vh;
+			}
+			.center4{
 				text-align: center;
 				display: block;
 				margin-top: 3vh;

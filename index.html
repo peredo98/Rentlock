@@ -9,14 +9,14 @@
 		<script src="js/jquery.min.js"></script>
 		<link href="css/jquery.bxslider.css" rel="stylesheet">
 		<script src="js/jquery.bxslider.js"></script>
-	<head>
+	</head>
 	<body>
 		<div id="wrapper">
 			<div id="bar">
 				<header>
 					<img  class="home" id="logo"src="images/logo.png" height="40vh">
 					<text id="name">RENTLOCK</text>
-					<input id="search"type="text" placeholder="Search..." >
+					<input id="search" type="text" placeholder="Search..." >
 					<text class="login">Log in</text>
 				</header>
 				<div id="sepbar">
@@ -37,7 +37,7 @@
 					<li>|</li>
 					<li>Rent</li>
 					<li>|</li>
-					<li class="separate">Rent out</li>
+					<li class="separate rentout">Rent out</li>
 					<li class="register">Register</li>
 					<li>|</li>
 					<li>Contact us</li>
@@ -62,23 +62,7 @@
 				<div id="bottom">
 					<h1 id="rentnow">Rent now</h1>
 					<div id="products">
-						<div class="box">
-						<img src="images/p1.png">
-						<p>$200 per day</p>
-						</div>
-						<div class="box">
-						<img src="images/p2.png">
-						<p>$25 per day</p>
-						</div><div class="box">
-						<img src="images/p3.png">
-						<p>$50 per day</p>
-						</div><div class="box">
-						<img src="images/p4.png">
-						<p>$100 per day</p>
-						</div><div class="box">
-						<img src="images/p5.png">
-						<p>$10 per day</p>
-						</div>
+
 					</div>
 					<footer>
 						<ul class='files'>
@@ -94,7 +78,7 @@
 			
 			<!-- LOGIN -->
 			<section id="login">
-				<h1 id='login-title'>Log in<h1>
+				<h1 id='login-title'>Log in</h1>
 				<div id="login-box">
 				<div class="center">
 				<input class='input-box' type='name' placeholder='username*'></div>
@@ -109,7 +93,7 @@
 
 			<!-- Register -->
 			<section id="register">
-				<h1 id='login-title'>Register<h1>
+				<h1 id='login-title'>Register</h1>
 				<div id="register-box">
 				<div class="center2">
 				<input class='input-box2' type='name' placeholder='Name*'></div>
@@ -139,13 +123,102 @@
 				</div>
 
 			</section>
+
+			<!-- Rent out -->
+			<section id="rentout">
+				<h1 id='login-title'>Rent Out</h1>
+				<div id="rentout-box">
+				<div class="center2">
+				<input class='input-box2' type='name' name='pname' id='pname' placeholder="Product's name*"></div>
+				<div class="center2">
+				<input class='input-box2' type='name' name='ppd' id='ppd' placeholder='Price per day*'></div>
+				<div class="center2">
+				<input class='input-box2' type='name' name='mird' id='mird' placeholder='Minimum renting days*'></div>
+				<div class="center2">
+				<input class='input-box2' type='name' name='mard' id='mard' placeholder='Maximum renting days*'></div>
+				<div class="center2">
+				<input class='input-box2' type='name'  name='fol' id='fol' placeholder='Fee of lost/theft*'></div>
+				<div class="center2">
+				<input class='input-box2' type='name'  name='fod' id='fod' placeholder='Fee of damage*'></div>
+				<div class="center4">
+				<select class='input-box2' type='name'  name='ll' id='ll' placeholder='Lockers location*'>
+					<option value="Locker's location">Locker's location*</option>
+					<option value="Mexico City">Mexico City</option>
+					<option value="Guadalajara">Guadalajara</option>
+					<option value="Monterrey">Monterrey</option>
+				</select></div>
+				<div class="center4">
+				<select class='input-box2' type='name'  name='cat' id='cat' placeholder='Lockers location*'>
+				<option value="Categories">Categories*</option>
+					<option value="Books">Books</option>
+					<option value="Clothing">Clothing</option>
+					<option value="Electronics">Electronics</option>
+					<option value="Jewerly">Jewerly</option>
+					<option value="Other">Other</option>
+				</select></div>
+				<div class="center3">
+				<input class='input-box2' type='name' name='iu' id='iu' placeholder="Image URL"></div>
+				<div class="center2">
+				<input class='input-box3' type='name' name='des' id='des' placeholder='Description*'></div>
+				<div class="center">
+				<input class='submit' id="upload" type='submit'  name='upload' value='Upload'></div>
+				</div>
+			</section>
 		</div>
 		<script>
 			$(document).ready(function(){
 				$('.slider').bxSlider();
 
+				 // 0=Name  1=Price Per Day  2=Maximum renting days  3=Minimum Renting Days   4=Fee lost  5=Fee Damage 6=location 7=Img 8=Description 9=Category
+
+				
+				var product0 = ["Gamer Computer", "$200 per day", "30", "1", '20000', "1000", "Mexico City", "images/p1.png", "i7, GTX 1060, 8GB Ram, perfect conditions", "Electronics"];
+				var product1 = ["The History of Medicine", "$25 per day", "60", "1", '100', "100", "Monterrey", "images/p2.png", "book of medicine by john hudson, good for students", "Books"];
+				var product2 = ["Elegant watch", "$50 per day", "7", "1", '5000', "1000", "Guadalajara", "images/p3.png", "elegant watch brand patito perfect for events and job interviws", "Clothing"];
+				var product3 = ["Wedding Suit", "$100 per day", "7", "1", '10000', "1000", "Mexico City", "images/p4.png", "perfect suit for wedding, hand made by clothmaker", "Clothing"];
+				var product4 = ["Sim card", "$10 per day", "30", "1", '50', "50", "Mexico City", "images/p5.png", "Sim Card by Telcel, perfect for traveling", "Electronic"];
+
+				localStorage.setItem("product0", product0);
+				localStorage.setItem("product1", product1);
+				localStorage.setItem("product2", product2);
+				localStorage.setItem("product3", product3);
+				localStorage.setItem("product4", product4);
+
+				var products = [[]];
+				var product = [];
+
+				products.pop();
+
+				products.push(product0);
+				products.push(product1);
+				products.push(product2);
+				products.push(product3);
+				products.push(product4);
+
+				
+					
+				var j;
+				if(!localStorage.getItem("counter")){
+					j = products.length;
+					localStorage.setItem("counter", j);
+				}
+				else{
+					j = localStorage.getItem("counter");
+				}
+
+				function showAllproducts(){
+					setArray();
+					for (var i = 0; i < products.length; i++) {
+						$('#products').append("<div class='box'><img src='"+ products [i][7]+"'><p>'"+ products [i][1]+"'</p></div>");
+					}
+				}
+				
+ 				
+
+
 				$('.home').click(function(e) {
             		$("section").fadeOut();
+            		$('.products').empty();
             		$('#home').fadeIn().delay(500);
        			});
 
@@ -158,7 +231,51 @@
             		$("section").fadeOut();
             		$('#register').fadeIn().delay(500);
        			});
+       			$('.rentout').click(function(e) {
+            		$("section").fadeOut();
+            		$('#rentout').fadeIn().delay(500);
+       			});
 
+       			function saveProduct(){
+       				product.push( $('#pname').val(),  $('#ppd').val(),  $('#mird').val(), $('#mard').val(), $('#fol').val(), $('#fod').val(), $('#ll').val(), $('#iu').val(), $('#des').val(), $('#cat').val());;
+       				//products.push([ $('#pname').val(),  $('#ppd').val(),  $('#mird').val(), $('#mard').val(), $('#fol').val(), $('#fod').val(), $('#ll').val(), $('#iu').val(), $('#des').val(), $('#cat').val()]);
+       				localStorage.setItem("product" + j, product);
+       				j++;
+       				localStorage.setItem("counter", j);
+
+       			}
+
+       			$('#upload').click(function(e) {
+            		saveProduct();
+
+       			});
+
+       			function getLocalStorage(){
+	       			for (var i = 0; i < j; i++) {
+	       				if(localStorage.getItem("product" + i)){
+
+	       					localStorage.getItem("product" + i);
+						}
+	       			}
+	       			
+       			}
+
+       			function setArray(){
+       				while(products.length > 0){
+       					products.pop();
+       				}
+       				var tempproduct = []
+       				for (var i = 0; i < j; i++) {
+	       				if(localStorage.getItem("product" + i)){
+	       					tempproduct = [localStorage.getItem("product" + i)]
+	       					products.push(tempproduct);
+						}
+	       			}
+	       			console.log(products[1]);
+       			}
+       			
+      			getLocalStorage();
+       			showAllproducts();
 
 			});
 		</script>
