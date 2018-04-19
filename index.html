@@ -171,29 +171,20 @@
 
 				 // 0=Name  1=Price Per Day  2=Maximum renting days  3=Minimum Renting Days   4=Fee lost  5=Fee Damage 6=location 7=Img 8=Description 9=Category
 
+				if(!localStorage.getItem("products")){
+				var products = [
+					{"name":"Gamer Computer", "ppd":"$200 per day", "mird": "30","mard": "1",  "fol":'20000', "fod":"1000", "ll":"Mexico City", "img":"images/p1.png", "desc":"i7, GTX 1060, 8GB Ram, perfect conditions", "cat":"Electronics"},
+					{"name":"The History of Medicine", "ppd":"$25 per day", "mird":"60", "mard":"1", "fol":'100', "fod":"100", "ll":"Monterrey", "img":"images/p2.png", "desc": "book of medicine by john hudson, good for students", "cat": "Books"},
+					{"name":"Elegant watch", "ppd": "$50 per day", "mird":"7", "mard":"1","fol": '5000', "fod":"1000", "ll":"Guadalajara", "img":"images/p3.png", "desc":"elegant watch brand patito perfect for events and job interviews", "cat":"Clothing"},
+					{"name":"Wedding Suit", "ppd":"$100 per day", "mird":"7", "mard":"1", "fol":'10000', "fod":"1000", "ll":"Mexico City","img": "images/p4.png", "desc":"perfect suit for wedding,  hand made by clothmaker", "cat": "Clothing"},
+					{"name":"Sim card", "ppd":"$10 per day", "mird":"30", "mard":"1", "fol":'50', "fod":"50", "ll":"Mexico City", "img":"images/p5.png", "desc":"Sim Card by Telcel, perfect for traveling", "cat": "Electronics"}
+				];}
+				else{
+					var products = getLocalStorage();
+				}
 				
-				var product0 = ["Gamer Computer", "$200 per day", "30", "1", '20000', "1000", "Mexico City", "images/p1.png", "i7, GTX 1060, 8GB Ram, perfect conditions", "Electronics"];
-				var product1 = ["The History of Medicine", "$25 per day", "60", "1", '100', "100", "Monterrey", "images/p2.png", "book of medicine by john hudson, good for students", "Books"];
-				var product2 = ["Elegant watch", "$50 per day", "7", "1", '5000', "1000", "Guadalajara", "images/p3.png", "elegant watch brand patito perfect for events and job interviws", "Clothing"];
-				var product3 = ["Wedding Suit", "$100 per day", "7", "1", '10000', "1000", "Mexico City", "images/p4.png", "perfect suit for wedding, hand made by clothmaker", "Clothing"];
-				var product4 = ["Sim card", "$10 per day", "30", "1", '50', "50", "Mexico City", "images/p5.png", "Sim Card by Telcel, perfect for traveling", "Electronic"];
 
-				localStorage.setItem("product0", product0);
-				localStorage.setItem("product1", product1);
-				localStorage.setItem("product2", product2);
-				localStorage.setItem("product3", product3);
-				localStorage.setItem("product4", product4);
-
-				var products = [[]];
-				var product = [];
-
-				products.pop();
-
-				products.push(product0);
-				products.push(product1);
-				products.push(product2);
-				products.push(product3);
-				products.push(product4);
+				localStorage.setItem("products", JSON.stringify(products));
 
 				
 					
@@ -207,9 +198,8 @@
 				}
 
 				function showAllproducts(){
-					setArray();
 					for (var i = 0; i < products.length; i++) {
-						$('#products').append("<div class='box'><img src='"+ products [i][7]+"'><p>'"+ products [i][1]+"'</p></div>");
+						$('#products').append("<div class='box'><img src='"+ products[i].img +"'><p>'"+ products [i].ppd+"'</p></div>");
 					}
 				}
 				
@@ -218,8 +208,9 @@
 
 				$('.home').click(function(e) {
             		$("section").fadeOut();
-            		$('.products').empty();
+            		$('#products').empty();
             		$('#home').fadeIn().delay(500);
+            		showAllproducts();
        			});
 
 				$('.login').click(function(e) {
@@ -237,11 +228,11 @@
        			});
 
        			function saveProduct(){
-       				product.push( $('#pname').val(),  $('#ppd').val(),  $('#mird').val(), $('#mard').val(), $('#fol').val(), $('#fod').val(), $('#ll').val(), $('#iu').val(), $('#des').val(), $('#cat').val());;
+       				products.push({ "name":  $('#pname').val(),  "ppd": $('#ppd').val(),  "mird": $('#mird').val(),"mard": $('#mard').val(), "fol": $('#fol').val(), "fod": $('#fod').val(), "ll":$('#ll').val(), "iu":$('#iu').val(), "desc":$('#des').val(), "cat": $('#cat').val() });
        				//products.push([ $('#pname').val(),  $('#ppd').val(),  $('#mird').val(), $('#mard').val(), $('#fol').val(), $('#fod').val(), $('#ll').val(), $('#iu').val(), $('#des').val(), $('#cat').val()]);
-       				localStorage.setItem("product" + j, product);
-       				j++;
-       				localStorage.setItem("counter", j);
+       				localStorage.setItem("products", JSON.stringify(products));
+       				//j++;
+       				//localStorage.setItem("counter", j);
 
        			}
 
@@ -251,16 +242,16 @@
        			});
 
        			function getLocalStorage(){
-	       			for (var i = 0; i < j; i++) {
-	       				if(localStorage.getItem("product" + i)){
+	       			if(localStorage.getItem("products")){
 
-	       					localStorage.getItem("product" + i);
-						}
+	       				products = JSON.parse(localStorage.getItem("products"));
+						
 	       			}
+	       			return products;
 	       			
        			}
 
-       			function setArray(){
+       			/*function setArray(){
        				while(products.length > 0){
        					products.pop();
        				}
@@ -272,9 +263,9 @@
 						}
 	       			}
 	       			console.log(products[1]);
-       			}
+       			}*/
        			
-      			getLocalStorage();
+      			//getLocalStorage();
        			showAllproducts();
 
 			});

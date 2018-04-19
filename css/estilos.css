@@ -233,7 +233,7 @@ body{
 		margin-bottom: 10vh;
 		}
 		#rentout-box{
-		height: 100vh;
+		height: 110vh;
 		width: 50vw;
 		background-color: white;
 		border-radius: 10px;
@@ -339,7 +339,10 @@ body{
 		
 		}
 		.register{
-
+			cursor: pointer;
+		}
+		.rentout{
+			cursor: pointer;
 		}
 		#login{
 			display: none;
