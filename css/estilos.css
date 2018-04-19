@@ -64,34 +64,32 @@ body{
 	overflow: hidden;
 }
 		header{
-		position: relative;
 		background-color: #75afad;
 		width: 100vw;
 		height: 8vh;
 		min-height: 50px;
 		position: fixed;
 		z-index: 5;
-		display:block;
+		}
+		#sepbar{
+		background-color: #75afad;
+		width: 100vw;
+		height: 7.9vh;
 		}
 		nav{
 		background-color: #75afad;
 		width: 100vw;
 		height: 8vh;
-		position: absolute;
-		top: 8vh;
-		z-index: 4;
 		}
 		#logo{
 		margin-left: 3.7vw; 
 		margin-top: .8vh;
-		display:block;
 		}
 		#name{
 		position: absolute; 
 		font-weight: 100;
 		font-size: 26px;
 		padding: 1.6vh .7vw 1.6vh .7vw;
-		display:block;
 		left: 6.5vw;
 		top: 0;
 		}
@@ -110,13 +108,13 @@ body{
 		background-size: 35px 35px; 
 		background-repeat: no-repeat; 
 		background-position: right;
-		display:block;
 		}
 		#contact{
 		position: absolute;
 		top: 30%;
 		left: 80vw;
 		display:block;
+		cursor: pointer;
 		}
 		#menu{
 		margin-left:3.6vw;
@@ -139,7 +137,7 @@ body{
 		padding-right: 8.5vw;
 		}
 		.separate{
-		padding-right: 30vw;
+		padding-right: 25vw;
 		}
 		li{
 		padding: 3vh 2.2vw 3vh 0px;
@@ -214,64 +212,47 @@ body{
 		text-align: center;
 		font-weight: 100;
 		color: gray;
-		font-size: 3vw;
-		font-weight: 100;
-		margin-top: 15vh;
+		font-size: 38px;
+		padding: 20px;
 		}
-		#login{
-		position: absolute;
-		top: 25vh;
-		left: 25vw;
+		#login-box{
 		height: 60vh;
 		width: 50vw;
 		background-color: white;
 		border-radius: 10px;
 		border: .5px solid rgba(0,0,0,.1);
+		margin: 0 auto;
 		}
-		.user{
-		position: absolute;
-		top: 10vh;
-		left: 15vw;
-		width: 20vw;
-		height: 5vh;
+		.input-box{
+		width: 30vw;
 		border-radius: 10px;
 		border: .5px solid rgba(0,0,0,.2);
-		font-size: 1.2vw;
-		padding: 1vh 1vw;
+		font-size: 16px;
+		padding: 2vh 2vw;
+		color: gray;
 		}
-		.password{
-		position: absolute;
-		top: 20vh;
-		left: 15vw;
-		width: 20vw;
-		height: 5vh;
-		border-radius: 10px;
-		border: .5px solid rgba(0,0,0,.2);
-		font-size: 1.2vw;
-		padding: 1vh 1vw;
+		.center{
+		margin: 0 auto;
+		text-align:center;
+		margin-top: 7%;
 		}
 		.submit{
-		position: absolute;
 		font-family: roboto;
-		top: 35vh;
-		left: 20vw;
-		width: 10vw;
-		height: 5vh;
+		width: 150px;
 		border-radius: 10px;
 		border: none;
-		font-size: 1.4vw;
-		padding: 1vh 1vw;
+		font-size: 18px;
+		padding: 2vh 2vw;
 		background-color: #D9853B;
 		color: #ECECEA;
 		font-weight: 100;
 		}
-		.register{
-		text-align: center;
+		.register-button{
 		font-weight: 100;
 		color: gray;
-		font-size: 1.8vw;
+		font-size: 20px;
 		font-weight: 100;
-		margin-top: 45vh;
+		cursor: pointer;
 		}
 		.files{
 		}
@@ -286,9 +267,22 @@ body{
 		footer{
 			
 		}
+		#login{
+			display: none;
+		}
 		@media(max-width: 1160px){
 			#name, nav{
 				display: none;
+			}
+			#login-box{
+				width: 80vw;
+			}
+
+			.input-box{
+				width: 60vw;
+			}
+			.center{
+				margin-top: 5vh;
 			}
 
 		}

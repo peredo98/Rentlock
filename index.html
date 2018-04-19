@@ -12,36 +12,41 @@
 	<head>
 	<body>
 		<div id="wrapper">
-			<header>
-				<img id="logo"src="images/logo.png" height="40vh">
-				<text id="name">RENTLOCK</text>
-				<input id="search"type="text" placeholder="Search..." >
-				<text id="contact">Log in</text>
-			</header>
-			<nav>
-				<ul id="menu">
-				<li class="sep"><select class="categories">
-					<option value="Categories">Categories</option>
-					<option value="Books">Books</option>
-					<option value="Clothing">Clothing</option>
-					<option value="Electronics">Electronics</option>
-					<option value="Jewerly">Jewerly</option>
-					<option value="Other">Other</option>
-				</select></li>
-				<li>Home</li>
-				<li>|</li>
-				<li>About</li>
-				<li>|</li>
-				<li>Rent</li>
-				<li>|</li>
-				<li class="separate">Rent out</li>
-				<li>Register</li>
-				<li>|</li>
-				<li>Contact us</li>
-				<li class="sc"><img src="images/sc.png" height="40vh"></li>
-				</ul>
-			</nav>
-			<div id=#mainpage>
+			<div id="bar">
+				<header>
+					<img id="logo"src="images/logo.png" height="40vh">
+					<text id="name">RENTLOCK</text>
+					<input id="search"type="text" placeholder="Search..." >
+					<text id="contact" class="login">Log in</text>
+				</header>
+				<div id="sepbar">
+				</div>
+				<nav>
+					<ul id="menu">
+					<li class="sep"><select class="categories">
+						<option value="Categories">Categories</option>
+						<option value="Books">Books</option>
+						<option value="Clothing">Clothing</option>
+						<option value="Electronics">Electronics</option>
+						<option value="Jewerly">Jewerly</option>
+						<option value="Other">Other</option>
+					</select></li>
+					<li>Home</li>
+					<li>|</li>
+					<li>About</li>
+					<li>|</li>
+					<li>Rent</li>
+					<li>|</li>
+					<li class="separate">Rent out</li>
+					<li>Register</li>
+					<li>|</li>
+					<li>Contact us</li>
+					<li class="sc"><img src="images/sc.png" height="40vh"></li>
+					</ul>
+				</nav>
+
+			</div>
+			<section id=#home>
 				<div id="features">
 					<div  class="slider">
 						<div id="slide 1">
@@ -85,11 +90,32 @@
 						</ul>
 					</footer>
 				</div>
-			</div>
+			</section>
+
+			<!-- LOGIN -->
+			<section id="login">
+				<h1 id='login-title'>Log in<h1>
+				<div id="login-box">
+				<div class="center">
+				<input class='input-box' type='name' placeholder='Your email/phone*'></div>
+				<div class="center">
+				<input class='input-box' type='password' placeholder='password*'></div>
+				<div class="center">
+				<input class='submit' type='submit' value='Log in'></div>
+				<div class="center">
+				<h1 class='register-button'>Register</h1></div>
+				</div>
+			</section>
 		</div>
 		<script>
 			$(document).ready(function(){
 				$('.slider').bxSlider();
+
+				$('#contact').click(function(e) {
+            		$("section").fadeOut();
+            		$('#login').fadeIn().delay(400);
+       			});
+
 			});
 		</script>
 	</body>
