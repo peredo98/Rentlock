@@ -109,7 +109,7 @@ body{
 		background-repeat: no-repeat; 
 		background-position: right;
 		}
-		#contact{
+		.login{
 		position: absolute;
 		top: 30%;
 		left: 80vw;
@@ -223,8 +223,25 @@ body{
 		border: .5px solid rgba(0,0,0,.1);
 		margin: 0 auto;
 		}
+		#register-box{
+		height: 70vh;
+		width: 50vw;
+		background-color: white;
+		border-radius: 10px;
+		border: .5px solid rgba(0,0,0,.1);
+		margin: 0 auto;
+		margin-bottom: 10vh;
+		}
 		.input-box{
 		width: 30vw;
+		border-radius: 10px;
+		border: .5px solid rgba(0,0,0,.2);
+		font-size: 16px;
+		padding: 2vh 2vw;
+		color: gray;
+		}
+		.input-box2{
+		width: 15vw;
 		border-radius: 10px;
 		border: .5px solid rgba(0,0,0,.2);
 		font-size: 16px;
@@ -235,6 +252,15 @@ body{
 		margin: 0 auto;
 		text-align:center;
 		margin-top: 7%;
+		}
+		.center2{
+		margin: 4% 5%;
+		margin-bottom: 0;
+		display: inline-block;
+		}
+		.center3{
+		margin: 0;
+		display: inline-block;
 		}
 		.submit{
 		font-family: roboto;
@@ -252,7 +278,23 @@ body{
 		color: gray;
 		font-size: 20px;
 		font-weight: 100;
-		cursor: pointer;
+		
+		}
+		label{
+		font-weight: 100;
+		color: gray;
+		font-size: 14px;
+		font-weight: 100;
+		
+		}
+		.register{
+			cursor: pointer;
+		}
+		#register{
+			display: none;
+		}
+		.home{
+			cursor: pointer;
 		}
 		.files{
 		}
@@ -264,8 +306,8 @@ body{
 		font-size: 12px;
 		
 		}
-		footer{
-			
+		.register{
+
 		}
 		#login{
 			display: none;
@@ -277,12 +319,25 @@ body{
 			#login-box{
 				width: 80vw;
 			}
+			#register-box{
+				width: 80vw;
+				height: 140vh;
+			}
 
 			.input-box{
 				width: 60vw;
 			}
+			.input-box2{
+				width: 50vw;
+				margin: 0;
+			}
 			.center{
 				margin-top: 5vh;
+			}
+			.center2{
+				text-align: center;
+				display: block;
+				margin-top: 3vh;
 			}
 
 		}
