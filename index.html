@@ -35,7 +35,7 @@
 					<li>|</li>
 					<li>About</li>
 					<li>|</li>
-					<li>Rent</li>
+					<li class="searchpage">Rent</li>
 					<li>|</li>
 					<li class="separate rentout">Rent out</li>
 					<li class="register">Register</li>
@@ -77,7 +77,7 @@
 			</section>
 			
 			<!-- LOGIN -->
-			<section id="login">
+			<section id="login" >
 				<h1 id='login-title'>Log in</h1>
 				<div id="login-box">
 				<div class="center">
@@ -164,21 +164,32 @@
 				<input class='submit' id="upload" type='submit'  name='upload' value='Upload'></div>
 				</div>
 			</section>
+
+			<section id="searchpage">
+				<div id="aside"></div>
+				<div id="productlist">
+
+				</div>
+			</section>
 		</div>
 		<script>
 			$(document).ready(function(){
 				$('.slider').bxSlider();
+			});
+		</script>
+		<script>
+			$(document).ready(function(){
 
 				var isLoggedIn = false;
 				var userLogged;
 
 				if(!localStorage.getItem("products")){
 				var products = [
-					{"name":"Gamer Computer", "ppd":"$200 per day", "mird": "30","mard": "1",  "fol":'20000', "fod":"1000", "ll":"Mexico City", "img":"images/p1.png", "desc":"i7, GTX 1060, 8GB Ram, perfect conditions", "cat":"Electronics"},
-					{"name":"The History of Medicine", "ppd":"$25 per day", "mird":"60", "mard":"1", "fol":'100', "fod":"100", "ll":"Monterrey", "img":"images/p2.png", "desc": "book of medicine by john hudson, good for students", "cat": "Books"},
-					{"name":"Elegant watch", "ppd": "$50 per day", "mird":"7", "mard":"1","fol": '5000', "fod":"1000", "ll":"Guadalajara", "img":"images/p3.png", "desc":"elegant watch brand patito perfect for events and job interviews", "cat":"Clothing"},
-					{"name":"Wedding Suit", "ppd":"$100 per day", "mird":"7", "mard":"1", "fol":'10000', "fod":"1000", "ll":"Mexico City","img": "images/p4.png", "desc":"perfect suit for wedding,  hand made by clothmaker", "cat": "Clothing"},
-					{"name":"Sim card", "ppd":"$10 per day", "mird":"30", "mard":"1", "fol":'50', "fod":"50", "ll":"Mexico City", "img":"images/p5.png", "desc":"Sim Card by Telcel, perfect for traveling", "cat": "Electronics"}
+					{"name":"Gamer Computer", "ppd":"$200 per day", "mird": "30","mard": "1",  "fol":'20000', "fod":"1000", "ll":"Mexico City", "img":"images/p1.png", "desc":"i7, GTX 1060, 8GB Ram, perfect conditions", "cat":"Electronics", "owner": "juan"},
+					{"name":"The History of Medicine", "ppd":"$25 per day", "mird":"60", "mard":"1", "fol":'100', "fod":"100", "ll":"Monterrey", "img":"images/p2.png", "desc": "book of medicine by john hudson, good for students", "cat": "Books", "owner": "juan"},
+					{"name":"Elegant watch", "ppd": "$50 per day", "mird":"7", "mard":"1","fol": '5000', "fod":"1000", "ll":"Guadalajara", "img":"images/p3.png", "desc":"elegant watch brand patito perfect for events and job interviews", "cat":"Clothing", "owner": "juan"},
+					{"name":"Wedding Suit", "ppd":"$100 per day", "mird":"7", "mard":"1", "fol":'10000', "fod":"1000", "ll":"Mexico City","img": "images/p4.png", "desc":"perfect suit for wedding,  hand made by clothmaker", "cat": "Clothing", "owner": "juan"},
+					{"name":"Sim card", "ppd":"$10 per day", "mird":"30", "mard":"1", "fol":'50', "fod":"50", "ll":"Mexico City", "img":"images/p5.png", "desc":"Sim Card by Telcel, perfect for traveling", "cat": "Electronics", "owner": "juan"}
 				];}
 				else{
 					var products = getLocalStorageProducts();
@@ -190,13 +201,19 @@
 
 				function showAllproducts(){
 					for (var i = 0; i < products.length; i++) {
-						$('#products').append("<div class='box'><img src='"+ products[i].img +"'><p>'"+ products[i].ppd+"'</p></div>");
+						$('#products').append("<div class='box'><img src='"+ products[i].img +"'><p>"+ products[i].ppd+"</p></div>");
+					}
+				}
+
+				function showListproducts(){
+					for (var i = 0; i < products.length; i++) {
+						$('#productlist').append('<div id="boxlist"><img src='+ products[i].img +'><h1>'+ products[i].name+'</h1><h3>By '+ products[i].owner +'</h3><h1 style="color:black; ">'+ products[i].ppd+'</h1><h3 id="de">'+ products[i].desc+'</h3></div>');
 					}
 				}
 				
 				var users = [];
 
- 				if(localStorage.getItem("products")){
+ 				if(localStorage.getItem("users")){
  					var users = getLocalStorageUsers();
  				}
 
@@ -220,9 +237,13 @@
             		$("section").fadeOut();
             		$('#rentout').fadeIn().delay(500);
        			});
+       			$('.searchpage').click(function(e) {
+            		$("section").fadeOut();
+            		$('#searchpage').fadeIn().delay(500);
+       			});
 
        			function saveProduct(){
-       				products.push({ "name":  $('#pname').val(),  "ppd": $('#ppd').val(),  "mird": $('#mird').val(),"mard": $('#mard').val(), "fol": $('#fol').val(), "fod": $('#fod').val(), "ll":$('#ll').val(), "iu":$('#iu').val(), "desc":$('#des').val(), "cat": $('#cat').val() });
+       				products.push({ "name":  $('#pname').val(),  "ppd": $('#ppd').val(),  "mird": $('#mird').val(),"mard": $('#mard').val(), "fol": $('#fol').val(), "fod": $('#fod').val(), "ll":$('#ll').val(), "iu":$('#iu').val(), "desc":$('#des').val(), "cat": $('#cat').val(), "owner" : users[userLogged].usrn});
        	
        				localStorage.setItem("products", JSON.stringify(products));
        	
@@ -234,9 +255,12 @@
        			}
 
        			$('#upload').click(function(e) {
-            		saveProduct();
-
+	       			if(isLoggedIn){
+	            		saveProduct();
+	            	}
        			});
+
+       			
        			$('#register-button').click(function(e) {
        				if($('#psw').val() == $('#rpsw').val()){
             			registerUser();
@@ -284,11 +308,14 @@
        				if(isLoggedIn){
        					$('#usrprofile').text(users[userLogged].fname);
        				}
-       			}	
+       			}
+
+
 
        			showAllproducts();
+       			showListproducts();
 
-			});
+			});	
 		</script>
 	</body>
 </html>
