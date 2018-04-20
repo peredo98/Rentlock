@@ -27,7 +27,7 @@
 							<li class="login" id="usrprofile">Login</li>
 							<li class="register" id="changing">Register</li>
 							<li class="home">Home</li>
-							<li>About</li>
+							<li class="about">About</li>
 							<li class="searchpage">Rent</li>
 							<li class="rentout">Rent out</li>
 							<li class="contacto">Contact Us</li>
@@ -49,7 +49,7 @@
 					</select></li>
 					<li class="home">Home</li>
 					<li>|</li>
-					<li>About</li>
+					<li class="about">About</li>
 					<li>|</li>
 					<li class="searchpage">Rent</li>
 					<li>|</li>
@@ -245,6 +245,18 @@
 				</div>
 			</section>
 
+			<section id="about">
+				<h1 id="login-title">About us</h1>
+				<div id="login-box">
+					<h1 class="att1">We are a exciting new website and application,crated in 2018, by : Emliano Peredo, 
+                                        Juan José del Castillo, and Anuar Villanueva.</h1>
+					<h1 class="att"> 
+                                        Rentlock is website created to implement a renting system based on a locker delivery.</h1>
+					<h1 class="att2"> This app was first  designed to improve the lives of the students at the Tec of Monterre
+                                        But our goal is to implement this system across multiple universities in Mexico and hopefully 
+                                        branch out internationally. </h1>
+			</section>
+
 			<div id="productpages">
 			</div>
 		</div>
@@ -420,6 +432,12 @@
             		$('#contactpage').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
        			});
+       			$('.about').click(function(e) {
+            		$("section").fadeOut();
+            		$('#about').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
+       			});
+
 
        			function saveProduct(){
        				products.push({ "name":  $('#pname').val(),  "ppd": $('#ppd').val(),  "mird": $('#mird').val(),"mard": $('#mard').val(), "fol": $('#fol').val(), "fod": $('#fod').val(), "ll":$('#ll').val(), "iu":$('#iu').val(), "desc":$('#des').val(), "cat": $('#cat').val(), "owner" : users[userLogged].usrn});

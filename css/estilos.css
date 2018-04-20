@@ -342,7 +342,7 @@ body{
 		}
 		.box{
 		width: 16.8vw;
-		height: 40vh;
+		height: 16.8vw;
 		background-color: #FFFFFF;
 		margin-left: 1.1vw;
 		margin-right: 1.1vw;
@@ -411,6 +411,12 @@ body{
 		border: .5px solid rgba(0,0,0,.1);
 		margin: 0 auto;
 		margin-bottom: 10vh;
+		}
+		#about{
+			display: none
+		}
+		.about{
+			cursor: pointer;
 		}
 		#contact-title{
 		text-align: center;
@@ -599,7 +605,10 @@ body{
 		margin: 1vh;
 		text-align: left;
 }
-
+#login-box h1{
+padding: 3vw;
+font-size: 2vw
+}
 .att{
 	color: gray;
 	font-size: 20px;
