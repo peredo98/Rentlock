@@ -327,7 +327,18 @@
 					$('#searchinfo').html("<h1>'"+s+"'</h1><h3>"+filteredProducts.length+" Results</h3>");
 					generateProductPages(filteredProducts);
  				}
-
+ 				function goToHome(){
+ 					("section").fadeOut();
+            		$('#products').empty();
+            		$('#home').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
+            		showAllproducts();
+ 				}
+ 				function goToLogin(){
+ 					("section").fadeOut();
+            		$('#login').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
+ 				}
 				$('.home').click(function(e) {
             		$("section").fadeOut();
             		$('#products').empty();
@@ -379,6 +390,7 @@
        			$('#upload').click(function(e) {
 	       			if(isLoggedIn){
 	            		saveProduct();
+	            		goToHome();
 	            	}
        			});
 
@@ -386,6 +398,7 @@
        			$('#register-button').click(function(e) {
        				if($('#psw').val() == $('#rpsw').val()){
             			registerUser();
+            			goToLogin();
             		}
             		else{
             			window.alert("the passwords are not equal");
