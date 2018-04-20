@@ -14,12 +14,26 @@
 		<div id="wrapper">
 			<div id="bar">
 				<header>
-					<img  class="home" id="logo"src="images/logo.png" height="40vh">
-					<text id="name">RENTLOCK</text>
-					<input id="search" type="text" placeholder="Search..." >
-					<text  class="login place" id="usrprofile">Log in</text>
+					<div>
+						<img  class="home" id="logo"src="images/logo.png" height="40vh">
+						<text id="name">RENTLOCK</text>
+						<input id="search" type="text" class="lupa" placeholder="Search...">
+
+						<text  class="login place" id="usrprofile">Log in</text>
+						<img src="Images/hamburger.png" class="hamburger" height="40vw">
 					</div>
-					<img src="Images/hamburger.png" class="hamburger" height="40vw">
+					<div>
+						<ul id="hamburgermenu">
+							<li class="login" id="usrprofile">Login</li>
+							<li class="register" id="changing">Register</li>
+							<li class="home">Home</li>
+							<li>About</li>
+							<li class="searchpage">Rent</li>
+							<li class="rentout">Rent out</li>
+							<li>Contact us</li>
+							<li class="sc"><img src="images/sc.png" height="40vh"></li>
+						</ul>
+					</div>
 				</header>
 				<div id="sepbar">
 				</div>
@@ -47,18 +61,7 @@
 					</ul>
 				</nav>
 			</div>
-			<div>
-				<ul id="hamburgermenu">
-					<li class="login" id="usrprofile">Login</li>
-					<li class="register" id="changing">Register</li>
-					<li class="home">Home</li>
-					<li>About</li>
-					<li class="searchpage">Rent</li>
-					<li class="rentout">Rent out</li>
-					<li>Contact us</li>
-					<li class="sc"><img src="images/sc.png" height="40vh"></li>
-				</ul>
-			</div>
+			
 
 			</div>
 			<section id="home">
@@ -181,7 +184,25 @@
 			</section>
 
 			<section id="searchpage">
-				<div id="aside"></div>
+				<div id="aside">
+					<div id="searchinfo">
+						<h1></h1>
+						<h3></h3>
+					</div>
+					<div id="productfilters">
+						<!-- <div id="catsel" class="selecteditem" data-selectedmaterial="barro-negro"><span></span></div> -->
+					</div>
+					<h1 >Location:</h1>
+					<h3 data-selectedlocation="Mexico City">Mexico City</h3>
+					<h3 data-selectedlocation="Monterrey">Monterrey</h3>
+					<h3 data-selectedlocation="Guadalajara">Guadalajara</h3>
+					<h1>Categories:</h1>
+					<h3 data-selectedcategory="Books">Books</h3>
+					<h3 data-selectedcategory="Clothing">Clothing</h3>
+					<h3 data-selectedcategory="Electronics">Electronics</h3>
+					<h3 data-selectedcategory="Jewerly">Jewerly</h3>
+					<h3 data-selectedcategory="Other">Other</h3>
+				</div>
 				<div id="productlist">
 
 				</div>
@@ -250,6 +271,33 @@
  					var users = getLocalStorageUsers();
  				}
 
+ 				$("#search").keyup(function(event) {
+ 					if(event.which == 13){
+ 						$("section").fadeOut();
+            			$('#searchpage').fadeIn().delay(500);
+            			$('#hamburgermenu').slideUp();
+            			var s = $(this).val();
+            			searchFilter(s);
+ 					}
+ 						
+ 				});
+
+ 				function searchFilter(s){
+ 					var filteredProducts = [];
+ 					var a;
+ 					for (i = 0; i < products.length; i++) {
+				        a = JSON.stringify(products[i]);
+				        if (a.toUpperCase().indexOf(s.toUpperCase()) > -1) {
+				            filteredProducts.push(products[i]);
+				        } 
+    				}
+    				$("#productlist").empty();
+    				for (var i = 0; i < filteredProducts.length; i++) {
+						$('#productlist').append('<div class="boxlist" id="p'+i+'"><img src='+ filteredProducts[i].img +'><h1>'+ filteredProducts[i].name+'</h1><h3>By '+ filteredProducts[i].owner +'</h3><h1>'+ filteredProducts[i].ppd+'</h1><h3 id="de">'+ filteredProducts[i].desc+'</h3></div>');
+					}
+					$('#searchinfo').html("<h1>'"+s+"'</h1><h3>"+filteredProducts.length+" Results</h3>");
+ 				}
+
 				$('.home').click(function(e) {
             		$("section").fadeOut();
             		$('#products').empty();
@@ -258,13 +306,13 @@
             		showAllproducts();
        			});
 
-				$('.login').click(function(e) {
+				$('body').on("click", ".login" ,function() {
             		$("section").fadeOut();
             		$('#login').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
        			});
 
-       			$('.register').click(function(e) {
+       			$('body').on("click", ".register" ,function() {
             		$("section").fadeOut();
             		$('#register').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
@@ -323,7 +371,7 @@
 	            	}
        			});
 
-       			$('.logout').click(function(e) {
+       			$('body').on("click", ".logout" ,function() {
        				logout();
        			});
 
@@ -352,6 +400,10 @@
        					$('#changing').text("Log out");
        					$('#changing').removeClass('register').addClass('logout');
        					$('#usrprofile').removeClass('login').addClass('myprofile profilepic');
+       					$('li#usrprofile').text(users[userLogged].fname + " (My Profile)");
+       					$('li#changing').text("Log out");
+       					$('li#changing').removeClass('register').addClass('logout');
+       					$('li#usrprofile').removeClass('login').addClass('myprofile profilepic');
        				}
        			}
        			function logout(){
@@ -360,6 +412,10 @@
        				$('#changing').text("Register");
        				$('#changing').removeClass('logout').addClass('register');
        				$('#usrprofile').removeClass('myprofile profilepic').addClass('login');
+       				$('li#usrprofile').text("Log In");
+       				$('li#changing').text("Register");
+       				$('li#changing').removeClass('logout').addClass('register');
+       				$('li#usrprofile').removeClass('myprofile profilepic').addClass('login');
        			}
        			$('.hamburger').click(function(e){
        				$('#hamburgermenu').slideToggle();

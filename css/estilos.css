@@ -104,10 +104,14 @@ body{
 		top: 1vh; 
 		border: none; 
 		border-radius: 10px;
-		background-image: url(botonlupa.png);
-		background-size: 35px 35px; 
-		background-repeat: no-repeat; 
-		background-position: right;
+		
+		}
+		.lupa{
+			background-image: url(botonlupa.png);
+			background-size: 35px 35px; 
+			background-repeat: no-repeat; 
+			background-position: right;
+			cursor: pointer;
 		}
 		.place{
 		position: absolute;
@@ -133,9 +137,9 @@ body{
 			cursor: pointer;
 		}
 		.hamburger{
-		position: absolute;
+		position: fixed;
 		margin-left: 78vw; 
-		margin-top: 0px;
+		margin-top: -6vh;
 		cursor: pointer;
 		display: none;
 		z-index: 5;
@@ -268,6 +272,23 @@ body{
 		font-weight: 100;
 		padding: 0vh 0vw 1vw 5vw;
 		margin: 0;
+		}
+		#aside h1{
+		color: #484848;
+		font-size: 1.7vw;
+		font-weight: 400;
+		padding: 2vw 2vw 1vw 1vw;
+		left: .5vw;
+		margin: 1vh;
+		text-align: left;
+		}
+		#aside h3{
+		color: black;
+		font-size: 1.2vw;
+		font-weight: 100;
+		padding: 0vh 0vw 1vw 5vw;
+		margin: 0;
+		cursor: pointer;
 		}
 		.product-box #de{
 		color: black;
@@ -441,6 +462,7 @@ body{
 		color: #ECECEA;
 		font-weight: 100;
 		}
+
 		#product-buttons{
 		font-family: roboto;
 		width: 10vw;
@@ -517,6 +539,8 @@ body{
 		margin: 1vh;
 		text-align: left;
 }
+
+
 		@media(max-width: 1160px){
 			#name, nav{
 				display: none;
@@ -571,4 +595,25 @@ body{
 			.hamburger{
 			display: block;
 			}
+		}
+.selecteditem{
+	width: 10vw;
+	padding: 1vw;
+	font-size: 1vw;
+	line-height: .7vh;
+	text-transform: capitalize;
+	background-color: whitesmoke;
+	color: gray;
+}
+
+.selecteditem span{
+	float: right;
+	position: relative;
+	top: -1vh;
+	width: 1.5vw;
+	height: 1.5vw;
+	background: url(chosen-sprite@2x.png) top right;
+	cursor: pointer;
+}
+
 		
