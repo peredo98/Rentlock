@@ -217,6 +217,14 @@
 				</div>
 			</section>
 
+			<section id="profilepage">
+				<h1 id='login-title'>My Profile</h1>
+				<div id="userinfo">
+					
+				</div>
+				</div>
+			</section>
+
 			<div id="productpages">
 			</div>
 		</div>
@@ -228,8 +236,14 @@
 		<script>
 			$(document).ready(function(){
 
-				var isLoggedIn = false;
 				var userLogged;
+				var users = [];
+
+				
+ 				if(localStorage.getItem("users")){
+ 					var users = getLocalStorageUsers();
+ 				}
+
 
 				if(!localStorage.getItem("products")){
 				var products = [
@@ -243,6 +257,15 @@
 					var products = getLocalStorageProducts();
 				}
 				
+				if(localStorage.getItem("user-logged")){
+					userLogged = localStorage.getItem("user-logged");
+					isLoggedIn = true;
+					login();
+				}
+				if(!localStorage.getItem("user-logged")){
+					isLoggedIn = false
+					
+				}
 
 				localStorage.setItem("products", JSON.stringify(products));
 
@@ -290,15 +313,7 @@
 	            		$('section#'+ $(this).attr("id") +'').fadeIn().delay(500);
 	       			});
 	       		}
-
-
-
-
-				var users = [];
-
- 				if(localStorage.getItem("users")){
- 					var users = getLocalStorageUsers();
- 				}
+	
 
  				$("#search").keyup(function(event) {
  					if(event.which == 13){
@@ -350,6 +365,11 @@
 				$('body').on("click", ".login" ,function() {
             		$("section").fadeOut();
             		$('#login').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
+       			});
+       			$('body').on("click", ".myprofile" ,function() {
+            		$("section").fadeOut();
+            		$('#profilepage').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
        			});
        			$('body').on("click", ".sc" ,function() {
@@ -453,6 +473,7 @@
        					$('li#changing').text("Log out");
        					$('li#changing').removeClass('register').addClass('logout');
        					$('li#usrprofile').removeClass('login').addClass('myprofile profilepic');
+       					localStorage.setItem("user-logged", userLogged);
        				}
        			}
        			function logout(){
@@ -465,6 +486,7 @@
        				$('li#changing').text("Register");
        				$('li#changing').removeClass('logout').addClass('register');
        				$('li#usrprofile').removeClass('myprofile profilepic').addClass('login');
+       				localStorage.removeItem("user-logged");
        			}
        			$('.hamburger').click(function(e){
        				$('#hamburgermenu').slideToggle();
