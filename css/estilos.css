@@ -109,12 +109,47 @@ body{
 		background-repeat: no-repeat; 
 		background-position: right;
 		}
-		.login{
+		.place{
 		position: absolute;
 		top: 30%;
-		left: 80vw;
+		left: 77vw;
 		display:block;
+		}
+		.profilepic{
+		background-image: url(../Images/profile.png);
+		background-size: 35px 35px; 
+		background-repeat: no-repeat; 
+		background-position: 100% 50%;
+		padding-right: 3vw;
+		}
+		'.myprofile{
+			cursor: pointer;
+		}
+	
+		.login{
+			cursor: pointer;
+		}
+		.logout{
+			cursor: pointer;
+		}
+		.hamburger{
+		position: absolute;
+		margin-left: 78vw; 
+		margin-top: 0px;
 		cursor: pointer;
+		display: none;
+		z-index: 5;
+		}
+		#hamburgermenu{
+		background-color: #75afad;
+		vertical-align: top; 
+		display: none;
+		}
+		#hamburgermenu li {
+			text-align: center;
+			margin: 0 auto;
+			width: 100vw;
+			height: 1vh;
 		}
 		#menu{
 		margin-left:3.6vw;
@@ -263,6 +298,7 @@ body{
 			background-color: #FFFFFF;
 			border: .5px solid rgba(0,0,0,.1);
 			border-radius: 10px;
+			cursor: pointer;
 		}
 		#productlist{
 			width: 75vw;
@@ -288,6 +324,7 @@ body{
 		border: .5px solid rgba(0,0,0,.1);
 		border-radius: 10px;
 		float: left;
+		cursor: pointer;
 		}
 		.box img{
 		border-bottom: .5px solid rgba(0,0,0,.2);
@@ -460,6 +497,9 @@ body{
 		.rentout{
 			cursor: pointer;
 		}
+		.login{
+			cursor: pointer;
+		}
 		#login{
 			display: none;
 		}
@@ -524,5 +564,11 @@ body{
 				margin-top: 3vh;
 			}
 
-		}
+			.place{
+			display: none;
+
+			}
+			.hamburger{
+			display: block;
+			}
 		

@@ -17,7 +17,9 @@
 					<img  class="home" id="logo"src="images/logo.png" height="40vh">
 					<text id="name">RENTLOCK</text>
 					<input id="search" type="text" placeholder="Search..." >
-					<text class="login" id="usrprofile">Log in</text>
+					<text  class="login place" id="usrprofile">Log in</text>
+					</div>
+					<img src="Images/hamburger.png" class="hamburger" height="40vw">
 				</header>
 				<div id="sepbar">
 				</div>
@@ -38,12 +40,25 @@
 					<li class="searchpage">Rent</li>
 					<li>|</li>
 					<li class="separate rentout">Rent out</li>
-					<li class="register">Register</li>
+					<li class="register" id="changing">Register</li>
 					<li>|</li>
 					<li>Contact us</li>
 					<li class="sc"><img src="images/sc.png" height="40vh"></li>
 					</ul>
 				</nav>
+			</div>
+			<div>
+				<ul id="hamburgermenu">
+					<li class="login" id="usrprofile">Login</li>
+					<li class="register" id="changing">Register</li>
+					<li class="home">Home</li>
+					<li>About</li>
+					<li class="searchpage">Rent</li>
+					<li class="rentout">Rent out</li>
+					<li>Contact us</li>
+					<li class="sc"><img src="images/sc.png" height="40vh"></li>
+				</ul>
+			</div>
 
 			</div>
 			<section id="home">
@@ -216,7 +231,7 @@
 
 				function generateProductPages(){
 					for (var i = 0; i < products.length; i++) {
-						$('#productpages').append("<section class='product-box hide' id='p"+i+"' ><img src="+ products[i].img +" ><h1>Compu</h1><h3>By "+ products[i].owner +"</h3><h1>"+ products[i].ppd +"</h1><h3>Fee of lost: "+products[i].fol+"</h3><h3>Fee of damage: "+products[i].fod+"</h3><h3>Minimum renting days: "+products[i].mird+"</h3><h3>Maximum renting days: "+products[i].mard+"</h3><h1>Locker's Location: "+products[i].ll+"</h1><h3 id='de'>"+products[i].desc+"<h3><input  id='product-buttons' type='submit'  name='upload' value='Rent now'><input  id='product-buttons' type='submit'  name='upload' value='Add to Cart'></section>");
+						$('#productpages').append("<section class='product-box hide' id='p"+i+"' ><img src="+ products[i].img +" ><h1>"+ products[i].name +"</h1><h3>By "+ products[i].owner +"</h3><h1>"+ products[i].ppd +"</h1><h3>Fee of lost: "+products[i].fol+"</h3><h3>Fee of damage: "+products[i].fod+"</h3><h3>Minimum renting days: "+products[i].mird+"</h3><h3>Maximum renting days: "+products[i].mard+"</h3><h1>Locker's Location: "+products[i].ll+"</h1><h3 id='de'>"+products[i].desc+"<h3><input  id='product-buttons' type='submit'  name='upload' value='Rent now'><input  id='product-buttons' type='submit'  name='upload' value='Add to Cart'></section>");
 					}
 				}
 
@@ -239,25 +254,30 @@
             		$("section").fadeOut();
             		$('#products').empty();
             		$('#home').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
             		showAllproducts();
        			});
 
 				$('.login').click(function(e) {
             		$("section").fadeOut();
             		$('#login').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
        			});
 
        			$('.register').click(function(e) {
             		$("section").fadeOut();
             		$('#register').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
        			});
        			$('.rentout').click(function(e) {
             		$("section").fadeOut();
             		$('#rentout').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
        			});
        			$('.searchpage').click(function(e) {
             		$("section").fadeOut();
             		$('#searchpage').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
        			});
 
        			function saveProduct(){
@@ -293,14 +313,18 @@
 	       				if (($('#lusrn').val() == users[i].usrn) && ($('#lpsw').val() == users[i].psw)){
 	            			window.alert("login succesful");
 	            			correct = true;
-	            			isLoggedIn = true;
 	            			userLogged = i;
+	            			isLoggedIn = true;
 	            			login();
 	            		}
 	            	}
 	            	if(!correct){
 	            		window.alert("usr and psw dont match");
 	            	}
+       			});
+
+       			$('.logout').click(function(e) {
+       				logout();
        			});
 
        			function getLocalStorageProducts(){
@@ -325,14 +349,35 @@
        			function login(){
        				if(isLoggedIn){
        					$('#usrprofile').text(users[userLogged].fname);
+       					$('#changing').text("Log out");
+       					$('#changing').removeClass('register').addClass('logout');
+       					$('#usrprofile').removeClass('login').addClass('myprofile profilepic');
        				}
        			}
-
+       			function logout(){
+       				isLoggedIn = false;
+       				$('#usrprofile').text("Log In");
+       				$('#changing').text("Register");
+       				$('#changing').removeClass('logout').addClass('register');
+       				$('#usrprofile').removeClass('myprofile profilepic').addClass('login');
+       			}
+       			$('.hamburger').click(function(e){
+       				$('#hamburgermenu').slideToggle();
+       			});
 
 
        			showAllproducts();
        			showListproducts();
        			generateProductPages();
+
+       			$(window).resize(function(){     
+					if ($("body").width() > 1160 ){
+						$("#hamburgermenu").show();
+					}
+					if ($("body").width() <= 1660 ){
+						$("#hamburgermenu").hide();
+					}
+				});
 
 
 			});	
