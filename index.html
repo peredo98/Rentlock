@@ -208,6 +208,15 @@
 				</div>
 			</section>
 
+			<section id="cart">
+				<h1 id='login-title'>Cart</h1>
+				<div id="rentout-box">
+					<div id="cartlist">
+
+					</div>
+				</div>
+			</section>
+
 			<div id="productpages">
 			</div>
 		</div>
@@ -246,24 +255,44 @@
 
 				function showListproducts(){
 					for (var i = 0; i < products.length; i++) {
-						$('#productlist').append('<div class="boxlist" id="p'+i+'"><img src='+ products[i].img +'><h1>'+ products[i].name+'</h1><h3>By '+ products[i].owner +'</h3><h1>'+ products[i].ppd+'</h1><h3 id="de">'+ products[i].desc+'</h3></div>');
+						$('#productlist').append('<div class="boxlist" id="p'+i+'"><img src='+ products[i].img +'><h1 class="name">'+ products[i].name+'</h1><h3>By '+ products[i].owner +'</h3><h1>'+ products[i].ppd+'</h1><h3 id="de">'+ products[i].desc+'</h3></div>');
 					}
 				}
 
-				function generateProductPages(){
+				var cart = [];
+
+
+				function showCartproducts(){
+					$('#cartlist').empty();
+					for (var i = 0; i < cart.length; i++) {
+						$('#cartlist').append('<div class="boxlist" id="p'+i+'"><img src='+ cart[i].img +'><h1>'+ cart[i].name+'</h1><h3>By '+ cart[i].owner +'</h3><h1>'+ cart[i].ppd+'</h1><h3 id="de">'+ cart[i].desc+'</h3></div>');
+					}
+				}
+
+				function generateProductPages(products){
+					$('#productpages').empty();
 					for (var i = 0; i < products.length; i++) {
-						$('#productpages').append("<section class='product-box hide' id='p"+i+"' ><img src="+ products[i].img +" ><h1>"+ products[i].name +"</h1><h3>By "+ products[i].owner +"</h3><h1>"+ products[i].ppd +"</h1><h3>Fee of lost: "+products[i].fol+"</h3><h3>Fee of damage: "+products[i].fod+"</h3><h3>Minimum renting days: "+products[i].mird+"</h3><h3>Maximum renting days: "+products[i].mard+"</h3><h1>Locker's Location: "+products[i].ll+"</h1><h3 id='de'>"+products[i].desc+"<h3><input  id='product-buttons' type='submit'  name='upload' value='Rent now'><input  id='product-buttons' type='submit'  name='upload' value='Add to Cart'></section>");
-					}
+						$('#productpages').append("<section class='product-box hide' id='p"+i+"' ><img src="+ products[i].img +" ><h1 class='name'>"+ products[i].name +"</h1><h3>By "+ products[i].owner +"</h3><h1>"+ products[i].ppd +"</h1><h3>Fee of lost: "+products[i].fol+"</h3><h3>Fee of damage: "+products[i].fod+"</h3><h3>Minimum renting days: "+products[i].mird+"</h3><h3>Maximum renting days: "+products[i].mard+"</h3><h1>Locker's Location: "+products[i].ll+"</h1><h3 id='de'>"+products[i].desc+"<h3><input class='buy'  id='product-buttons' type='submit'  name='upload' value='Rent now'><input  id='product-buttons' class='addtocart' type='submit'  name='upload' value='Add to Cart'></section>");
+					}	
 				}
-
+				$("body").on("click", ".addtocart" ,function() {
+					var thiscart;
+					for(var i = 0; i < products.length; i++) {
+						if(products[i].name == $(this).parents().eq(1).find(".name").text()){
+		       				cart.push(products[i]);
+		       			}
+	       			}
+       			});
 
 				for (var i = 0; i < products.length; i++) {
 					$("body").on( "click", "#p"+i+"", function() {
 	            		$("section").fadeOut();
-	            		console.log($(this).attr("id"));
 	            		$('section#'+ $(this).attr("id") +'').fadeIn().delay(500);
 	       			});
 	       		}
+
+
+
 
 				var users = [];
 
@@ -296,6 +325,7 @@
 						$('#productlist').append('<div class="boxlist" id="p'+i+'"><img src='+ filteredProducts[i].img +'><h1>'+ filteredProducts[i].name+'</h1><h3>By '+ filteredProducts[i].owner +'</h3><h1>'+ filteredProducts[i].ppd+'</h1><h3 id="de">'+ filteredProducts[i].desc+'</h3></div>');
 					}
 					$('#searchinfo').html("<h1>'"+s+"'</h1><h3>"+filteredProducts.length+" Results</h3>");
+					generateProductPages(filteredProducts);
  				}
 
 				$('.home').click(function(e) {
@@ -310,6 +340,12 @@
             		$("section").fadeOut();
             		$('#login').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
+       			});
+       			$('body').on("click", ".sc" ,function() {
+            		$("section").fadeOut();
+            		$('#cart').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
+            		showCartproducts();
        			});
 
        			$('body').on("click", ".register" ,function() {
@@ -421,10 +457,9 @@
        				$('#hamburgermenu').slideToggle();
        			});
 
-
        			showAllproducts();
        			showListproducts();
-       			generateProductPages();
+       			generateProductPages(products);
 
        			$(window).resize(function(){     
 					if ($("body").width() > 1160 ){

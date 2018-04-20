@@ -161,6 +161,7 @@ body{
 		.sc{
 		position: relative;
 		top: -2vh;
+		cursor: pointer;
 		}
 		.categories{
 		font-family: Roboto; 
@@ -477,6 +478,7 @@ body{
 		color: #ECECEA;
 		font-weight: 100;
 		display: inline-block;
+		cursor: pointer;
 		}
 		.register-button{
 		font-weight: 100;
@@ -523,6 +525,9 @@ body{
 			cursor: pointer;
 		}
 		#login{
+			display: none;
+		}
+		#cart{
 			display: none;
 		}
 		footer{
