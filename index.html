@@ -171,6 +171,9 @@
 
 				</div>
 			</section>
+
+			<div id="productpages">
+			</div>
 		</div>
 		<script>
 			$(document).ready(function(){
@@ -201,16 +204,31 @@
 
 				function showAllproducts(){
 					for (var i = 0; i < products.length; i++) {
-						$('#products').append("<div class='box'><img src='"+ products[i].img +"'><p>"+ products[i].ppd+"</p></div>");
+						$('#products').append("<div class='box'  id='p"+i+"'><img src='"+ products[i].img +"'><p>"+ products[i].ppd+"</p></div>");
 					}
 				}
 
 				function showListproducts(){
 					for (var i = 0; i < products.length; i++) {
-						$('#productlist').append('<div id="boxlist"><img src='+ products[i].img +'><h1>'+ products[i].name+'</h1><h3>By '+ products[i].owner +'</h3><h1 style="color:black; ">'+ products[i].ppd+'</h1><h3 id="de">'+ products[i].desc+'</h3></div>');
+						$('#productlist').append('<div class="boxlist" id="p'+i+'"><img src='+ products[i].img +'><h1>'+ products[i].name+'</h1><h3>By '+ products[i].owner +'</h3><h1>'+ products[i].ppd+'</h1><h3 id="de">'+ products[i].desc+'</h3></div>');
 					}
 				}
-				
+
+				function generateProductPages(){
+					for (var i = 0; i < products.length; i++) {
+						$('#productpages').append("<section class='product-box hide' id='p"+i+"' ><img src="+ products[i].img +" ><h1>Compu</h1><h3>By "+ products[i].owner +"</h3><h1>"+ products[i].ppd +"</h1><h3>Fee of lost: "+products[i].fol+"</h3><h3>Fee of damage: "+products[i].fod+"</h3><h3>Minimum renting days: "+products[i].mird+"</h3><h3>Maximum renting days: "+products[i].mard+"</h3><h1>Locker's Location: "+products[i].ll+"</h1><h3 id='de'>"+products[i].desc+"<h3><input  id='product-buttons' type='submit'  name='upload' value='Rent now'><input  id='product-buttons' type='submit'  name='upload' value='Add to Cart'></section>");
+					}
+				}
+
+
+				for (var i = 0; i < products.length; i++) {
+					$("body").on( "click", "#p"+i+"", function() {
+	            		$("section").fadeOut();
+	            		console.log($(this).attr("id"));
+	            		$('section#'+ $(this).attr("id") +'').fadeIn().delay(500);
+	       			});
+	       		}
+
 				var users = [];
 
  				if(localStorage.getItem("users")){
@@ -314,6 +332,8 @@
 
        			showAllproducts();
        			showListproducts();
+       			generateProductPages();
+
 
 			});	
 		</script>

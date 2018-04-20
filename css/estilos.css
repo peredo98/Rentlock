@@ -155,7 +155,6 @@ body{
 		margin: 0 auto;
 		position: absolute;
 		top: 25vh;
-		margin: 0 auto;
 		font-weight: 100;
 		font-size: 4vw;
 		display: block;
@@ -176,13 +175,19 @@ body{
 		margin-right: 1.1vw;
 		height: 45vh;
 		}
-		#boxlist img{
+		.boxlist img{
 			float: left;
 			height: 30vh;
 			width: 15vw;
 		}
-		#boxlist h1{
-		color: gray;
+		.product-box img{
+			float: left;
+			height: 30vw;
+			width: 30vw;
+			margin: 5vw;
+		}
+		.boxlist h1{
+		color: #484848;
 		font-size: 20px;
 		font-weight: 400;
 		padding: 4vh 4vw 2vh 5vw;
@@ -198,7 +203,47 @@ body{
 		.searchpage{
 			cursor: pointer;
 		}
-		#boxlist h3{
+		.hide{
+			
+		}
+		.product-box{
+			height: 50vw;
+			width: 70vw;
+			background-color: white;
+			border-radius: 10px;
+			border: .5px solid rgba(0,0,0,.1);
+			margin: 0 auto;
+			margin-bottom: 10vh;
+			margin-top: 10vh;
+		}
+		.product-box h1{
+		color: #484848;
+		font-size: 1.7vw;
+		font-weight: 400;
+		padding: 2vw 2vw 1vw 1vw;
+		display: block;
+		position: relative;
+		left: .5vw;
+		margin: 1vh;
+		text-align: left;
+		}
+		.product-box h3{
+		color: black;
+		font-size: 1.2vw;
+		font-weight: 100;
+		padding: 0vh 0vw 1vw 5vw;
+		margin: 0;
+		}
+		.product-box #de{
+		color: black;
+		font-size: 1vw;
+		font-weight: 100;
+		padding: 2vw 0vw 0 5vw;
+		}
+		.hide{
+			display: none;
+		}
+		.boxlist h3{
 		color: black;
 		font-size: 14px;
 		font-weight: 100;
@@ -206,13 +251,13 @@ body{
 		margin: 0;
 		float: left;
 		}
-		#boxlist #de{
+		.boxlist #de{
 		color: black;
 		font-size: 14px;
 		font-weight: 100;
 		padding: 0vh 0vw 2vh 5vw;
 		}
-		#boxlist{
+		.boxlist{
 			width: 75vw;
 			height: 30vh;
 			background-color: #FFFFFF;
@@ -359,18 +404,31 @@ body{
 		color: #ECECEA;
 		font-weight: 100;
 		}
+		#product-buttons{
+		font-family: roboto;
+		width: 10vw;
+		height: 4vw;
+		border-radius: 10px;
+		border: none;
+		font-size: 1.5vw;
+		margin-top: 2vw;
+		margin-right: 4vw;
+		padding: 1vw 1vw;
+		background-color: #D9853B;
+		color: #ECECEA;
+		font-weight: 100;
+		display: inline-block;
+		}
 		.register-button{
 		font-weight: 100;
 		color: gray;
 		font-size: 20px;
-		font-weight: 100;
 		
 		}
 		label{
 		font-weight: 100;
 		color: gray;
 		font-size: 14px;
-		font-weight: 100;
 		
 		}
 		.register{
@@ -408,6 +466,17 @@ body{
 		footer{
 			width: 100vw;
 		}
+#product-title{
+		color: gray;
+		font-size: 20px;
+		font-weight: 400;
+		padding: 4vh 4vw 2vh 5vw;
+		display: block;
+		position: relative;
+		left: 4vw;
+		margin: 1vh;
+		text-align: left;
+}
 		@media(max-width: 1160px){
 			#name, nav{
 				display: none;
