@@ -397,6 +397,28 @@ body{
 		margin: 0 auto;
 		margin-bottom: 10vh;
 		}
+		.contacto{
+			cursor: pointer;
+		}
+		#contactpage{
+			display: none;
+		}
+		#contact-box{
+		height: 70vh;
+		width: 50vw;
+		background-color: white;
+		border-radius: 10px;
+		border: .5px solid rgba(0,0,0,.1);
+		margin: 0 auto;
+		margin-bottom: 10vh;
+		}
+		#contact-title{
+		text-align: center;
+		font-weight: 100;
+		color: gray;
+		font-size: 38px;
+		padding: 20px;
+		}
 		#user-box{
 		height: 70vh;
 		width: 50vw;
@@ -622,6 +644,9 @@ body{
 			#rentout-box{
 				width: 80vw;
 				height: 140vh;
+			}
+			#contact-box{
+				width: 80vw;
 			}
 
 			.input-box{

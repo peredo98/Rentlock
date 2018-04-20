@@ -30,7 +30,7 @@
 							<li>About</li>
 							<li class="searchpage">Rent</li>
 							<li class="rentout">Rent out</li>
-							<li>Contact us</li>
+							<li class="contacto">Contact Us</li>
 							<li class="sc"><img src="images/sc.png" height="40vh"></li>
 						</ul>
 					</div>
@@ -56,7 +56,7 @@
 					<li class="separate rentout">Rent out</li>
 					<li class="register" id="changing">Register</li>
 					<li>|</li>
-					<li>Contact us</li>
+					<li class="contacto">Contact us</li>
 					<li class="sc"><img src="images/sc.png" height="40vh"></li>
 					</ul>
 				</nav>
@@ -224,6 +224,24 @@
 							
 						</div>
 					</div>
+				</div>
+			</section>
+
+			<section id="contactpage">
+				<h1 id="contact-title">Contact us</h1>
+				<div id="contact-box">
+					<div class="center2">
+					<input class='input-box2' type='name'  placeholder='Name*'></div>
+					<div class="center2">
+					<input class='input-box2' type='name' placeholder='Lastname*'></div>
+					<div class="center2">
+					<input class='input-box2' type='email'  placeholder='Email*'></div>
+					<div class="center2">
+					<input class='input-box2' type='name'  placeholder='Subject*'></div>
+					<div class="center2">
+					<input class='input-box3' type='name'  placeholder='Body*'></div>
+					<div class="center2">
+					<input class='submit' type='submit' name='send' value='Send'></div>
 				</div>
 			</section>
 
@@ -395,6 +413,11 @@
        			$('.searchpage').click(function(e) {
             		$("section").fadeOut();
             		$('#searchpage').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
+       			});
+       			$('.contacto').click(function(e) {
+            		$("section").fadeOut();
+            		$('#contactpage').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
        			});
 
