@@ -60,6 +60,10 @@ body{
 	background-color: #ECECEA;
 	width: 100vw;
 }
+.center5{
+	margin: 0 auto;
+	margin-top: 3vh;
+}
 #wrapper{
 	overflow: hidden;
 }
@@ -393,6 +397,15 @@ body{
 		margin: 0 auto;
 		margin-bottom: 10vh;
 		}
+		#user-box{
+		height: 70vh;
+		width: 50vw;
+		background-color: white;
+		border-radius: 10px;
+		border: .5px solid rgba(0,0,0,.1);
+		margin: 0 auto;
+		margin-bottom: 10vh;
+		}
 		#rentout-box{
 		height: 110vh;
 		width: 50vw;
@@ -462,6 +475,20 @@ body{
 		background-color: #D9853B;
 		color: #ECECEA;
 		font-weight: 100;
+		}
+		.submit2{
+		font-family: roboto;
+		width: 150px;
+		border-radius: 10px;
+		border: none;
+		font-size: 18px;
+		padding: 2vh 2vw;
+		background-color: #D9853B;
+		color: #ECECEA;
+		font-weight: 100;
+		margin-top: 5vh;
+		margin: 0 auto;
+		display: block;
 		}
 
 		#product-buttons{
@@ -551,6 +578,32 @@ body{
 		text-align: left;
 }
 
+.att{
+	color: gray;
+	font-size: 20px;
+	font-weight: 400;
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 3vh
+}
+.att1{
+	color: gray;
+	font-size: 20px;
+	font-weight: 400;
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 10vh
+}
+.att2{
+	color: gray;
+	font-size: 20px;
+	font-weight: 400;
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 3vh;
+	padding-bottom: 5vh;
+}
+
 
 		@media(max-width: 1160px){
 			#name, nav{
@@ -562,6 +615,9 @@ body{
 			#register-box{
 				width: 80vw;
 				height: 140vh;
+			}
+			#user-box{
+				width: 80vw;
 			}
 			#rentout-box{
 				width: 80vw;

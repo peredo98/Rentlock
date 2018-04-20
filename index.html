@@ -219,9 +219,11 @@
 
 			<section id="profilepage">
 				<h1 id='login-title'>My Profile</h1>
-				<div id="userinfo">
-					
-				</div>
+					<div id="user-box">
+						<div id="userinfo">
+							
+						</div>
+					</div>
 				</div>
 			</section>
 
@@ -236,10 +238,11 @@
 		<script>
 			$(document).ready(function(){
 
+				var isLoggedIn;
 				var userLogged;
 				var users = [];
 
-				
+
  				if(localStorage.getItem("users")){
  					var users = getLocalStorageUsers();
  				}
@@ -343,14 +346,14 @@
 					generateProductPages(filteredProducts);
  				}
  				function goToHome(){
- 					("section").fadeOut();
+ 					$("section").fadeOut();
             		$('#products').empty();
             		$('#home').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
             		showAllproducts();
  				}
  				function goToLogin(){
- 					("section").fadeOut();
+ 					$("section").fadeOut();
             		$('#login').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
  				}
@@ -433,6 +436,7 @@
 	            			userLogged = i;
 	            			isLoggedIn = true;
 	            			login();
+	            			goToHome();
 	            		}
 	            	}
 	            	if(!correct){
@@ -474,6 +478,7 @@
        					$('li#changing').removeClass('register').addClass('logout');
        					$('li#usrprofile').removeClass('login').addClass('myprofile profilepic');
        					localStorage.setItem("user-logged", userLogged);
+       					makeProfile();
        				}
        			}
        			function logout(){
@@ -487,10 +492,16 @@
        				$('li#changing').removeClass('logout').addClass('register');
        				$('li#usrprofile').removeClass('myprofile profilepic').addClass('login');
        				localStorage.removeItem("user-logged");
+       				goToHome();
        			}
        			$('.hamburger').click(function(e){
        				$('#hamburgermenu').slideToggle();
        			});
+
+
+       			function makeProfile(){
+       				$("#userinfo").html('<h1 class="att1">Name: '+users[userLogged].fname+'</h1><h1 class="att">Lastname: '+users[userLogged].uln+'</h1><h1 class="att">Email: '+users[userLogged].uemail+'</h1><h1 class="att">City: '+users[userLogged].city+'</h1><h1 class="att">Adress: '+users[userLogged].adress+'</h1><h1 class="att">Zipcode: '+users[userLogged].zipcode+'</h1><h1 class="att2">Telephone: '+users[userLogged].tel+'</h1><input class="submit2 logout" type="submit" value="Log out">');
+       			}
 
        			showAllproducts();
        			showListproducts();
