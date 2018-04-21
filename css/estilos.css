@@ -726,6 +726,10 @@ body{
 			.product-box {
    				height: 70vh;
    			}
+   			.boxlist img {
+			    height: 35vw;
+			    width: 35vw;
+			}
 		}
 
 .selecteditem{
