@@ -146,7 +146,7 @@ body{
 		.hamburger{
 		position: fixed;
 		margin-left: 78vw; 
-		margin-top: -6vh;
+		margin-top: -45px;
 		cursor: pointer;
 		display: none;
 		z-index: 5;
