@@ -68,12 +68,19 @@
 				<div id="features">
 					<div  class="slider">
 						<div id="slide 1">
-							<img src="images/img1.jpg" >
-							<div class="legend"><h1>Meet our renting system</h1></div>
+							<img src="images/slider1.jpeg" >
 						</div>
 						<div id="slide 1">
-							<img src="images/img1.jpg" >
-							<div class="legend"><h1>Easier to rent</h1></div>
+							<img src="images/slider2.jpeg" >
+						</div>
+						<div id="slide 1">
+							<img src="images/slider3.jpeg" >
+						</div>
+						<div id="slide 1">
+							<img src="images/slider4.jpeg" >
+						</div>
+						<div id="slide 1">
+							<img src="images/slider5.jpeg" >
 						</div>
 					</div>
 				</div>
@@ -241,7 +248,7 @@
 					<div class="center2">
 					<input class='input-box3' type='name'  placeholder='Body*'></div>
 					<div class="center2">
-					<input class='submit' type='submit' name='send' value='Send'></div>
+					<input class='submit' type='submit' name='send' id="contact-button" value='Send'></div>
 				</div>
 			</section>
 
@@ -280,11 +287,11 @@
 
 				if(!localStorage.getItem("products")){
 				var products = [
-					{"name":"Gamer Computer", "ppd":"$200 per day", "mird": "30","mard": "1",  "fol":'20000', "fod":"1000", "ll":"Mexico City", "img":"images/p1.png", "desc":"i7, GTX 1060, 8GB Ram, perfect conditions", "cat":"Electronics", "owner": "juan"},
-					{"name":"The History of Medicine", "ppd":"$25 per day", "mird":"60", "mard":"1", "fol":'100', "fod":"100", "ll":"Monterrey", "img":"images/p2.png", "desc": "book of medicine by john hudson, good for students", "cat": "Books", "owner": "juan"},
-					{"name":"Elegant watch", "ppd": "$50 per day", "mird":"7", "mard":"1","fol": '5000', "fod":"1000", "ll":"Guadalajara", "img":"images/p3.png", "desc":"elegant watch brand patito perfect for events and job interviews", "cat":"Clothing", "owner": "juan"},
-					{"name":"Wedding Suit", "ppd":"$100 per day", "mird":"7", "mard":"1", "fol":'10000', "fod":"1000", "ll":"Mexico City","img": "images/p4.png", "desc":"perfect suit for wedding,  hand made by clothmaker", "cat": "Clothing", "owner": "juan"},
-					{"name":"Sim card", "ppd":"$10 per day", "mird":"30", "mard":"1", "fol":'50', "fod":"50", "ll":"Mexico City", "img":"images/p5.png", "desc":"Sim Card by Telcel, perfect for traveling", "cat": "Electronics", "owner": "juan"}
+					{"name":"Gamer Computer", "ppd":"$200 per day", "mird": "30","mard": "1",  "fol":'20000', "fod":"1000", "ll":"Mexico City", "img":"images/p1.png", "desc":"i7, GTX 1060, 8GB Ram, perfect conditions", "cat":"Electronics", "owner": "Peredo"},
+					{"name":"The History of Medicine", "ppd":"$25 per day", "mird":"60", "mard":"1", "fol":'100', "fod":"100", "ll":"Monterrey", "img":"images/p2.png", "desc": "book of medicine by john hudson, good for students", "cat": "Books", "owner": "Nicolas"},
+					{"name":"Elegant watch", "ppd": "$50 per day", "mird":"7", "mard":"1","fol": '5000', "fod":"1000", "ll":"Guadalajara", "img":"images/p3.png", "desc":"elegant watch brand patito perfect for events and job interviews", "cat":"Clothing", "owner": "LordJJ"},
+					{"name":"Wedding Suit", "ppd":"$100 per day", "mird":"7", "mard":"1", "fol":'10000', "fod":"1000", "ll":"Mexico City","img": "images/p4.png", "desc":"perfect suit for wedding,  hand made by clothmaker", "cat": "Clothing", "owner": "JSON"},
+					{"name":"Sim card", "ppd":"$10 per day", "mird":"30", "mard":"1", "fol":'50', "fod":"50", "ll":"Mexico City", "img":"images/p5.png", "desc":"Sim Card by Telcel, perfect for traveling", "cat": "Electronics", "owner": "Yo merengues"}
 				];}
 				else{
 					var products = getLocalStorageProducts();
@@ -332,12 +339,26 @@
 					}	
 				}
 				$("body").on("click", ".addtocart" ,function() {
+					if(isLoggedIn){
 					var thiscart;
-					for(var i = 0; i < products.length; i++) {
-						if(products[i].name == $(this).parents().eq(1).find(".name").text()){
-		       				cart.push(products[i]);
+						for(var i = 0; i < products.length; i++) {
+							if(products[i].name == $(this).parents().eq(1).find(".name").text()){
+			       				cart.push(products[i]);
+			       			}
 		       			}
 	       			}
+	       			else{
+	       			window.alert("You need first to Log in to access this function");	
+	       			}
+       			});
+       			$("body").on("click", ".buy" ,function() {
+       				if(isLoggedIn){
+       				goToHome();
+					window.alert("Your purschase has been succesful, you have to adquire your product on the given location. The password for the lockers is: 1234567890");
+					}
+					else{
+						window.alert("You need first to Log in to access this function");
+					}
        			});
 
 				for (var i = 0; i < products.length; i++) {
@@ -406,10 +427,14 @@
             		$('#hamburgermenu').slideUp();
        			});
        			$('body').on("click", ".sc" ,function() {
+       				if(isLoggedIn){
             		$("section").fadeOut();
             		$('#cart').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
             		showCartproducts();
+            		}
+            		else{
+            		window.alert("You need first to Log in to access this function");}
        			});
 
        			$('body').on("click", ".register" ,function() {
@@ -418,9 +443,13 @@
             		$('#hamburgermenu').slideUp();
        			});
        			$('.rentout').click(function(e) {
+       				if(isLoggedIn){
             		$("section").fadeOut();
             		$('#rentout').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
+            		}
+            		else{
+            		window.alert("You need first to Log in to access this function");}
        			});
        			$('.searchpage').click(function(e) {
             		$("section").fadeOut();
@@ -451,21 +480,23 @@
        				localStorage.setItem("users", JSON.stringify(users));
        			}
 
-       			$('#upload').click(function(e) {
-	       			if(isLoggedIn){
-	            		saveProduct();
-	            		goToHome();
-	            	}
+       			$('body').on("click", "#upload" ,function() {
+	            	saveProduct();
+	            	goToHome();
        			});
 
        			
        			$('#register-button').click(function(e) {
-       				if($('#psw').val() == $('#rpsw').val()){
+       				if($('#psw').val() == $('#rpsw').val() && $("#checkbox_id").attr('checked', true)){
             			registerUser();
             			goToLogin();
+            			window.alert("You have been successfully registered");
+            		}
+            		else if($('#psw').val() == $('#rpsw').val()){
+            			window.alert("the passwords are not equal");
             		}
             		else{
-            			window.alert("the passwords are not equal");
+            			window.alert("You must accept the terms and conditions");
             		}
        			});
        			$('#login-button').click(function(e) {
@@ -481,7 +512,7 @@
 	            		}
 	            	}
 	            	if(!correct){
-	            		window.alert("usr and psw dont match");
+	            		window.alert("username and password dont match");
 	            	}
        			});
 
@@ -537,6 +568,11 @@
        			}
        			$('.hamburger').click(function(e){
        				$('#hamburgermenu').slideToggle();
+       			});
+
+       			$("#contact-button").click(function(e){
+       				goToHome();
+       				window.alert("Your message has been sended");
        			});
 
 

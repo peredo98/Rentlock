@@ -18,6 +18,9 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+input{
+	cursor: pointer;
+}
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -381,7 +384,7 @@ body{
 		padding: 20px;
 		}
 		#login-box{
-		height: 60vh;
+		height: 70vh;
 		width: 50vw;
 		background-color: white;
 		border-radius: 10px;
@@ -606,8 +609,7 @@ body{
 		text-align: left;
 }
 #login-box h1{
-padding: 3vw;
-font-size: 2vw
+	padding: 3vw;
 }
 .att{
 	color: gray;
@@ -695,6 +697,10 @@ font-size: 2vw
 			}
 			.hamburger{
 			display: block;
+			}
+			.box{
+				width: 30vw;
+				height: 30vw;
 			}
 		}
 .selecteditem{
