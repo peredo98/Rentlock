@@ -79,7 +79,7 @@ body{
 		z-index: 5;
 		}
 		#sepbar{
-		background-color: #75afad;
+		background-color: #ECECEA;
 		width: 100vw;
 		height: 7.9vh;
 		}
@@ -127,7 +127,7 @@ body{
 		display:block;
 		}
 		.profilepic{
-		background-image: url(../Images/profile.png);
+		background-image: url(../images/profile.png);
 		background-size: 35px 35px; 
 		background-repeat: no-repeat; 
 		background-position: 100% 50%;
@@ -359,7 +359,7 @@ body{
 		}
 		.box p{
 		color: black;
-		font-size: 1.5vh;
+		font-size: 1.5vw;
 		font-weight: 100;
 		padding: 1vh 1.8vw 1vh 1.8vw;
 		margin: 0;
@@ -604,6 +604,7 @@ body{
 		left: 4vw;
 		margin: 1vh;
 		text-align: left;
+		font-size: 1.5vh;
 }
 #login-box h1{
 	padding: 3vw;
@@ -712,6 +713,9 @@ body{
 			.product-box h3, .product-box h1, .product-box #de {
   				font-size: 5vw;
   			}
+  			.box p{
+				font-size: 2.5vh;
+			}
 		}
 		@media(max-width: 625px){
 
@@ -729,6 +733,9 @@ body{
    			.boxlist img {
 			    height: 35vw;
 			    width: 35vw;
+			}
+			.box p{
+				font-size: 1.5vh;
 			}
 		}
 
