@@ -226,6 +226,7 @@ body{
 			float: left;
 			height: 30vh;
 			width: 15vw;
+			margin-right: 5vw;
 		}
 		.product-box img{
 			float: left;
@@ -235,14 +236,9 @@ body{
 		}
 		.boxlist h1{
 		color: #484848;
-		font-size: 20px;
+   		font-size: 20px;
+  		margin-top: 2vh;
 		font-weight: 400;
-		padding: 4vh 4vw 2vh 5vw;
-		display: block;
-		position: relative;
-		left: 4vw;
-		margin: 1vh;
-		text-align: left;
 		}
 		#searchpage{
 			display: none;
@@ -311,9 +307,7 @@ body{
 		color: black;
 		font-size: 14px;
 		font-weight: 100;
-		padding: 0vh 0vw 2vh 5vw;
-		margin: 0;
-		float: left;
+		margin-top: 1vh;
 		}
 		.boxlist #de{
 		color: black;
@@ -328,6 +322,9 @@ body{
 			border: .5px solid rgba(0,0,0,.1);
 			border-radius: 10px;
 			cursor: pointer;
+		}
+		.nameconatiner{
+			margin-left: 20px;
 		}
 		#productlist{
 			width: 75vw;
@@ -362,7 +359,7 @@ body{
 		}
 		.box p{
 		color: black;
-		font-size: 1.8vw		;
+		font-size: 1.5vh;
 		font-weight: 100;
 		padding: 1vh 1.8vw 1vh 1.8vw;
 		margin: 0;
@@ -639,6 +636,10 @@ body{
 
 
 		@media(max-width: 1160px){
+			.product-box {
+   				height: 140vh;
+   				 width: 90vw;
+   			}
 			#name, nav{
 				display: none;
 			}
@@ -702,7 +703,31 @@ body{
 				width: 30vw;
 				height: 30vw;
 			}
+			#aside{
+				display: none;
+			}
+			.boxlist{
+				margin-left: 13vw;
+			}
+			.product-box h3, .product-box h1, .product-box #de {
+  				font-size: 5vw;
+  			}
 		}
+		@media(max-width: 625px){
+
+			#product-buttons {
+			    font-family: roboto;
+			    width: 30vw;
+			    height: 10vh;
+			    border-radius: 10px;
+			    border: none;
+			    font-size: 5vw;
+			}
+			.product-box {
+   				height: 70vh;
+   			}
+		}
+
 .selecteditem{
 	width: 10vw;
 	padding: 1vw;
