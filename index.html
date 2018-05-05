@@ -6,6 +6,28 @@
 		<title>RENTLOCK</title>
 		<link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
 		<link href="css/estilos.css" rel="stylesheet">
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118273093-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-118273093-1');
+		</script>
+		<script type="text/javascript" id="inspectletjs">
+		(function() {
+		var insp_ab_loader = true; // set this boolean to false to disable the A/B testing loader
+		window.__insp = window.__insp || [];
+		__insp.push(['wid', 784819108]);
+		var ldinsp = function(){
+		if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js?wid=784819108&r=' + Math.floor(new Date().getTime()/3600000); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x);if(typeof insp_ab_loader != "undefined" && insp_ab_loader){ var adlt = function(){ var e = document.getElementById('insp_abl'); if(e){ e.parentNode.removeChild(e); __insp.push(['ab_timeout']); }}; var adlc = "body{ visibility: hidden !important; }"; var adln = typeof insp_ab_loader_t != "undefined" ? insp_ab_loader_t : 1200; insp.onerror = adlt; var abti = setTimeout(adlt, adln); window.__insp_abt = abti; var abl = document.createElement('style'); abl.id = "insp_abl"; abl.type = "text/css"; if(abl.styleSheet) abl.styleSheet.cssText = adlc; else abl.appendChild(document.createTextNode(adlc)); document.head.appendChild(abl); } };
+		setTimeout(ldinsp, 0);
+		})();
+		</script>
+		<!-- End Inspectlet JS Code -->
+
 		<script src="js/jquery.min.js"></script>
 		<link href="css/jquery.bxslider.css" rel="stylesheet">
 		<script src="js/jquery.bxslider.js"></script>
@@ -97,6 +119,7 @@
 						<li><a href='https://marvelapp.com/2e0ai4b'>Marvelapp(app)</a></li>
 						<li><a href='https://drive.google.com/file/d/11Vr8QcovMh28gtcb6hNIEOb4EvDlKpB1/view?usp=sharing'>Model extraction</a></li>
 						<li><a href='files/Heuristic_evaluation.pdf'>Heuristic Evaluation</a></li>
+						<li><a href='https://www.youtube.com/watch?v=kFyH4jvehis&feature=youtu.be'>Showcase video</a></li>
 						</ul>
 					</footer>
 				</div>
@@ -218,7 +241,7 @@
 
 			<section id="cart">
 				<h1 id='login-title'>Cart</h1>
-				<div id="rentout-box">
+				<div>
 					<div id="cartlist">
 
 					</div>
@@ -255,12 +278,12 @@
 
 			<section id="about">
 				<h1 id="login-title">About us</h1>
-				<div id="login-box">
-					<h1 class="att1">We are a exciting new website and application,crated in 2018, by : Emliano Peredo, 
+				<div id="about-box">
+					<h1 class="abouttext">We are a exciting new website and application,crated in 2018, by : Emliano Peredo, 
                                         Juan José del Castillo, and Anuar Villanueva.</h1>
-					<h1 class="att"> 
+					<h1 class="abouttext"> 
                                         Rentlock is website created to implement a renting system based on a locker delivery.</h1>
-					<h1 class="att2"> This app was first  designed to improve the lives of the students at the Tec of Monterre
+					<h1 class="abouttext"> This app was first  designed to improve the lives of the students at the Tec of Monterre
                                         But our goal is to implement this system across multiple universities in Mexico and hopefully 
                                         branch out internationally. </h1>
 			</section>
@@ -402,7 +425,9 @@
             		$('#products').empty();
             		$('#home').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
+
             		showAllproducts();
+            		generateProductPages(products);
  				}
  				function goToLogin(){
  					$("section").fadeOut();
@@ -410,11 +435,7 @@
             		$('#hamburgermenu').slideUp();
  				}
 				$('.home').click(function(e) {
-            		$("section").fadeOut();
-            		$('#products').empty();
-            		$('#home').fadeIn().delay(500);
-            		$('#hamburgermenu').slideUp();
-            		showAllproducts();
+            		goToHome();
        			});
 
 				$('body').on("click", ".login" ,function() {
@@ -433,6 +454,7 @@
             		$('#cart').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
             		showCartproducts();
+            		generateProductPages(cart);
             		}
             		else{
             		window.alert("You need first to Log in to access this function");}
@@ -456,6 +478,7 @@
             		$("section").fadeOut();
             		$('#searchpage').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
+            		generateProductPages(products);
        			});
        			$('.contacto').click(function(e) {
             		$("section").fadeOut();
@@ -586,10 +609,7 @@
        			generateProductPages(products);
 
        			$(window).resize(function(){     
-					if ($("body").width() > 1160 ){
-						$("#hamburgermenu").show();
-					}
-					if ($("body").width() <= 1660 ){
+					if ($("body").width() >= 1160 ){
 						$("#hamburgermenu").hide();
 					}
 				});
