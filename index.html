@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<title>RENTLOCK</title>
 		<link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
-		<link href="css/estilos.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-118273093-1"></script>
@@ -404,8 +404,8 @@
  						
  				});
 
- 				$("#search").click(function(event) {
- 					if($("#search").val() != ""){
+ 				$("#search").change(function(event) {
+ 					if($(this).val() != ""){
  						$("section").hide();
             			$('#searchpage').fadeIn().delay(500);
             			$('#hamburgermenu').slideUp();
