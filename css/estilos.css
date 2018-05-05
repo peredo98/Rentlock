@@ -338,7 +338,7 @@ body{
 		}
 		#aside{
 			width: 18vw;
-			height: 614.4px;
+			overflow: inherit;
 			margin-left: 2vw;
 			margin-right: 0;
 			display: inline-block;
@@ -726,8 +726,22 @@ body{
 				width: 30vw;
 				height: 30vw;
 			}
-			#aside{
+			#productfilters{
 				display: none;
+			}
+			#aside {
+			    width: 100vw;
+			   	margin: 0 auto;
+			    display: block; 
+			}
+			#aside h1{
+				font-size: 5vw;
+				text-align: center;
+			}
+			#aside h3{
+				font-size: 4vw;
+				text-align: center;
+				padding: 0;
 			}
 			.boxlist{
 				margin-left: 13vw;

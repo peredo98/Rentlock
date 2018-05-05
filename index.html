@@ -221,18 +221,18 @@
 						<h3></h3>
 					</div>
 					<div id="productfilters">
-						<!-- <div id="catsel" class="selecteditem" data-selectedmaterial="barro-negro"><span></span></div> -->
+							<h1 >Location:</h1>
+							<h3 data-filter="Mexico City">Mexico City</h3>
+							<h3 data-filter="Monterrey">Monterrey</h3>
+							<h3 data-filter="Guadalajara">Guadalajara</h3>
+							<h1>Categories:</h1>
+							<h3 data-filter="Books">Books</h3>
+							<h3 data-filter="Clothing">Clothing</h3>
+							<h3 data-filter="Electronics">Electronics</h3>
+							<h3 data-filter="Jewerly">Jewerly</h3>
+							<h3 data-filter="Other">Other</h3>
 					</div>
-					<h1 >Location:</h1>
-					<h3 data-selectedlocation="Mexico City">Mexico City</h3>
-					<h3 data-selectedlocation="Monterrey">Monterrey</h3>
-					<h3 data-selectedlocation="Guadalajara">Guadalajara</h3>
-					<h1>Categories:</h1>
-					<h3 data-selectedcategory="Books">Books</h3>
-					<h3 data-selectedcategory="Clothing">Clothing</h3>
-					<h3 data-selectedcategory="Electronics">Electronics</h3>
-					<h3 data-selectedcategory="Jewerly">Jewerly</h3>
-					<h3 data-selectedcategory="Other">Other</h3>
+				
 				</div>
 				<div id="productlist">
 
@@ -387,7 +387,7 @@
 
 				for (var i = 0; i < products.length; i++) {
 					$("body").on( "click", "#p"+i+"", function() {
-	            		$("section").fadeOut();
+	            		$("section").hide();
 	            		$('section#'+ $(this).attr("id") +'').fadeIn().delay(500);
 	       			});
 	       		}
@@ -395,13 +395,41 @@
 
  				$("#search").keyup(function(event) {
  					if(event.which == 13){
- 						$("section").fadeOut();
+ 						$("section").hide();
             			$('#searchpage').fadeIn().delay(500);
             			$('#hamburgermenu').slideUp();
             			var s = $(this).val();
             			searchFilter(s);
  					}
  						
+ 				});
+
+ 				$("#search").click(function(event) {
+ 					if($("#search").val() != ""){
+ 						$("section").hide();
+            			$('#searchpage').fadeIn().delay(500);
+            			$('#hamburgermenu').slideUp();
+            			var s = $(this).val();
+            			searchFilter(s);
+ 					}
+ 						
+ 				});
+
+
+ 				$("#productfilters h3").click(function() {
+ 					searchFilter($(this).data("filter"));
+ 				});
+
+ 				$(".categories").change(function() {
+ 					$("section").hide();
+            		$('#searchpage').fadeIn().delay(500);
+            		$('#hamburgermenu').slideUp();
+            		if($(".categories option:selected").attr("value") != "Categories"){
+ 						searchFilter($(".categories option:selected").attr("value"));
+            		}
+            		else{
+            			searchFilter(" ");
+            		}
  				});
 
  				function searchFilter(s){
@@ -421,7 +449,7 @@
 					generateProductPages(filteredProducts);
  				}
  				function goToHome(){
- 					$("section").fadeOut();
+ 					$("section").hide();
             		$('#products').empty();
             		$('#home').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
@@ -430,7 +458,7 @@
             		generateProductPages(products);
  				}
  				function goToLogin(){
- 					$("section").fadeOut();
+ 					$("section").hide();
             		$('#login').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
  				}
@@ -439,18 +467,18 @@
        			});
 
 				$('body').on("click", ".login" ,function() {
-            		$("section").fadeOut();
+            		$("section").hide();
             		$('#login').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
        			});
        			$('body').on("click", ".myprofile" ,function() {
-            		$("section").fadeOut();
+            		$("section").hide();
             		$('#profilepage').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
        			});
        			$('body').on("click", ".sc" ,function() {
        				if(isLoggedIn){
-            		$("section").fadeOut();
+            		$("section").hide();
             		$('#cart').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
             		showCartproducts();
@@ -461,13 +489,13 @@
        			});
 
        			$('body').on("click", ".register" ,function() {
-            		$("section").fadeOut();
+            		$("section").hide();
             		$('#register').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
        			});
        			$('.rentout').click(function(e) {
        				if(isLoggedIn){
-            		$("section").fadeOut();
+            		$("section").hide();
             		$('#rentout').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
             		}
@@ -475,18 +503,18 @@
             		window.alert("You need first to Log in to access this function");}
        			});
        			$('.searchpage').click(function(e) {
-            		$("section").fadeOut();
+            		$("section").hide();
             		$('#searchpage').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
             		generateProductPages(products);
        			});
        			$('.contacto').click(function(e) {
-            		$("section").fadeOut();
+            		$("section").hide();
             		$('#contactpage').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
        			});
        			$('.about').click(function(e) {
-            		$("section").fadeOut();
+            		$("section").hide();
             		$('#about').fadeIn().delay(500);
             		$('#hamburgermenu').slideUp();
        			});
